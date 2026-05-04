@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Totspark Collective — Where Young Minds Ignite</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --cream: #FAF8F3;
+    --deep: #1A1A2E;
+    --accent: #E8633A;
+    --accent2: #4BBFA6;
+    --accent3: #F5C842;
+    --soft: #F2EDE4;
+    --text: #2C2C3A;
+    --muted: #7A7A8C;
+    --white: #FFFFFF;
+    --border: rgba(44,44,58,0.1);
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'DM Sans', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--cream);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.2rem 4rem;
+    background: rgba(250,248,243,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--deep);
+    letter-spacing: -0.5px;
+  }
+
+  .nav-logo span { color: var(--accent); }
+
+  .nav-links {
+    display: flex; gap: 2.5rem; list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+
+  .nav-cta {
+    background: var(--deep);
+    color: var(--white) !important;
+    padding: 0.6rem 1.4rem;
+    border-radius: 50px;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--accent) !important; color: var(--white) !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 8rem 4rem 4rem;
+    gap: 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(232,99,58,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: 20%;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(75,191,166,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: var(--soft);
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    padding: 0.4rem 1rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-tag::before { content: '◆'; font-size: 0.6rem; }
+
+  .hero-title {
+    font-family: var(--serif);
+    font-size: clamp(2.8rem, 4.5vw, 4.2rem);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--deep);
+    margin-bottom: 1.5rem;
+    letter-spacing: -1px;
+  }
+
+  .hero-title .highlight {
+    color: var(--accent);
+    font-style: italic;
+  }
+
+  .hero-subtitle {
+    font-size: 1.05rem;
+    color: var(--muted);
+    font-weight: 400;
+    max-width: 480px;
+    margin-bottom: 2.5rem;
+    line-height: 1.75;
+  }
+
+  .hero-buttons {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: var(--white);
+    padding: 0.85rem 2rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(232,99,58,0.3); }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--deep);
+    padding: 0.85rem 2rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1.5px solid var(--border);
+    transition: border-color 0.2s, color 0.2s;
+    display: inline-block;
+  }
+
+  .btn-secondary:hover { border-color: var(--deep); }
+
+  .hero-visual {
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .hero-card-stack {
+    position: relative;
+    width: 400px; height: 420px;
+  }
+
+  .hcard {
+    position: absolute;
+    border-radius: 20px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 32px rgba(0,0,0,0.07);
+  }
+
+  .hcard-main {
+    background: var(--deep);
+    width: 280px; height: 320px;
+    top: 40px; left: 60px;
+    display: flex; flex-direction: column; justify-content: space-between;
+    animation: float 4s ease-in-out infinite;
+  }
+
+  @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+
+  .hcard-main-label {
+    font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: rgba(255,255,255,0.5); font-weight: 600;
+  }
+
+  .hcard-main-num {
+    font-family: var(--serif);
+    font-size: 3.5rem; font-weight: 700;
+    color: var(--white); line-height: 1;
+  }
+
+  .hcard-main-sub {
+    font-size: 0.85rem; color: rgba(255,255,255,0.7);
+  }
+
+  .hcard-stat {
+    background: var(--white);
+    border: 1px solid var(--border);
+    width: 150px; padding: 1rem;
+    border-radius: 16px;
+    animation: float 4s ease-in-out infinite 0.5s;
+  }
+
+  .hcard-stat-1 { top: 0; left: 0; }
+  .hcard-stat-2 { bottom: 0; right: 0; animation-delay: 1s !important; }
+
+  .hcard-icon {
+    width: 36px; height: 36px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .hcard-stat-num { font-family: var(--serif); font-size: 1.5rem; font-weight: 700; color: var(--deep); }
+  .hcard-stat-txt { font-size: 0.72rem; color: var(--muted); font-weight: 500; }
+
+  /* STATS BAR */
+  .stats-bar {
+    background: var(--deep);
+    padding: 2rem 4rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .stat-item { text-align: center; }
+
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--white);
+    display: block;
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.5);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    margin-top: 0.3rem;
+    display: block;
+  }
+
+  .stat-divider {
+    width: 1px; height: 40px;
+    background: rgba(255,255,255,0.1);
+  }
+
+  /* SECTION SHARED */
+  section { padding: 6rem 4rem; }
+
+  .section-tag {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin-bottom: 0.75rem;
+    display: block;
+  }
+
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 700;
+    color: var(--deep);
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+    margin-bottom: 1.25rem;
+  }
+
+  .section-body {
+    font-size: 1.05rem;
+    color: var(--muted);
+    line-height: 1.8;
+    max-width: 600px;
+  }
+
+  /* ABOUT */
+  .about {
+    background: var(--white);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+
+  .about-visual {
+    position: relative;
+  }
+
+  .about-img-placeholder {
+    background: linear-gradient(135deg, #1A1A2E 0%, #2D2D5E 100%);
+    border-radius: 24px;
+    height: 420px;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-img-placeholder::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  .about-orb {
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    background: conic-gradient(var(--accent) 0deg, var(--accent2) 120deg, var(--accent3) 240deg, var(--accent) 360deg);
+    display: flex; align-items: center; justify-content: center;
+    animation: spin 12s linear infinite;
+    position: relative;
+  }
+
+  @keyframes spin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+
+  .about-orb-inner {
+    width: 130px; height: 130px;
+    border-radius: 50%;
+    background: var(--deep);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--serif);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--white);
+    animation: spin 12s linear infinite reverse;
+    text-align: center;
+    line-height: 1.3;
+  }
+
+  .about-badge {
+    position: absolute;
+    background: var(--accent);
+    color: var(--white);
+    padding: 0.75rem 1.25rem;
+    border-radius: 14px;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  .ab1 { top: 20px; right: -20px; }
+  .ab2 { bottom: 30px; left: -20px; }
+
+  .about-pillars {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .pillar {
+    background: var(--soft);
+    border-radius: 16px;
+    padding: 1.25rem;
+    border: 1px solid var(--border);
+  }
+
+  .pillar-icon {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .pillar-title {
+    font-size: 0.9rem; font-weight: 600; color: var(--deep);
+    margin-bottom: 0.25rem;
+  }
+
+  .pillar-text { font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
+
+  /* WHAT WE DO */
+  .what-we-do { background: var(--cream); }
+
+  .wwd-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .wwd-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 2rem;
+    border: 1px solid var(--border);
+    transition: transform 0.25s, box-shadow 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .wwd-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    border-radius: 20px 20px 0 0;
+  }
+
+  .wwd-card:nth-child(1)::before { background: var(--accent); }
+  .wwd-card:nth-child(2)::before { background: var(--accent2); }
+  .wwd-card:nth-child(3)::before { background: var(--accent3); }
+  .wwd-card:nth-child(4)::before { background: var(--accent2); }
+  .wwd-card:nth-child(5)::before { background: var(--accent); }
+  .wwd-card:nth-child(6)::before { background: var(--accent3); }
+
+  .wwd-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,0.08); }
+
+  .wwd-num {
+    font-family: var(--serif);
+    font-size: 3rem; font-weight: 700;
+    color: var(--soft);
+    position: absolute; top: 1rem; right: 1.5rem;
+    line-height: 1;
+  }
+
+  .wwd-icon {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .wwd-title {
+    font-size: 1.1rem; font-weight: 600; color: var(--deep);
+    margin-bottom: 0.5rem;
+  }
+
+  .wwd-text { font-size: 0.875rem; color: var(--muted); line-height: 1.6; }
+
+  /* APP */
+  .app-section {
+    background: var(--deep);
+    color: var(--white);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+
+  .app-section .section-tag { color: var(--accent3); }
+  .app-section .section-title { color: var(--white); }
+  .app-section .section-body { color: rgba(255,255,255,0.6); }
+
+  .app-features {
+    list-style: none;
+    margin-top: 2rem;
+    display: flex; flex-direction: column; gap: 1rem;
+  }
+
+  .app-features li {
+    display: flex; align-items: flex-start; gap: 0.75rem;
+    font-size: 0.9rem; color: rgba(255,255,255,0.8);
+  }
+
+  .app-check {
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: var(--accent2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.65rem; color: white;
+    flex-shrink: 0; margin-top: 1px;
+  }
+
+  .app-mockup {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 28px;
+    padding: 2rem;
+    position: relative;
+  }
+
+  .phone-frame {
+    background: #111;
+    border-radius: 36px;
+    padding: 1rem;
+    width: 220px; height: 420px;
+    margin: 0 auto;
+    position: relative;
+    border: 2px solid rgba(255,255,255,0.1);
+    display: flex; flex-direction: column; overflow: hidden;
+  }
+
+  .phone-screen {
+    background: var(--cream);
+    flex: 1; border-radius: 28px;
+    padding: 1rem; overflow: hidden;
+  }
+
+  .ps-header {
+    background: var(--accent);
+    border-radius: 12px;
+    padding: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .ps-header-label { font-size: 0.55rem; font-weight: 700; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 0.1em; }
+  .ps-header-title { font-family: var(--serif); font-size: 0.85rem; font-weight: 700; color: var(--white); margin-top: 0.1rem; }
+
+  .ps-event {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 0.6rem;
+    margin-bottom: 0.5rem;
+    border: 1px solid var(--border);
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+
+  .ps-event-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .ps-event-name { font-size: 0.6rem; font-weight: 600; color: var(--deep); }
+  .ps-event-date { font-size: 0.55rem; color: var(--muted); }
+
+  .ps-bottom {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .ps-mini-card {
+    background: var(--deep);
+    border-radius: 10px; padding: 0.6rem;
+    text-align: center;
+  }
+
+  .ps-mini-num { font-family: var(--serif); font-size: 0.85rem; font-weight: 700; color: var(--white); }
+  .ps-mini-txt { font-size: 0.5rem; color: rgba(255,255,255,0.5); }
+
+  .app-badges {
+    display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap;
+  }
+
+  .app-badge {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 12px;
+    padding: 0.6rem 1rem;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.8);
+    font-weight: 500;
+  }
+
+  /* FOUNDERS */
+  .founders { background: var(--white); }
+
+  .founders-intro {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    gap: 2rem; margin-bottom: 3rem;
+  }
+
+  .founders-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .founder-card {
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    transition: transform 0.25s;
+  }
+
+  .founder-card:hover { transform: translateY(-6px); }
+
+  .founder-avatar {
+    height: 200px;
+    display: flex; align-items: flex-end;
+    padding: 1.5rem;
+    position: relative;
+  }
+
+  .fc1 .founder-avatar { background: linear-gradient(135deg, #1A1A2E 0%, #E8633A 100%); }
+  .fc2 .founder-avatar { background: linear-gradient(135deg, #1A1A2E 0%, #4BBFA6 100%); }
+  .fc3 .founder-avatar { background: linear-gradient(135deg, #1A1A2E 0%, #F5C842 100%); }
+  .fc4 .founder-avatar { background: linear-gradient(135deg, #1A1A2E 0%, #E8633A 60%, #4BBFA6 100%); }
+
+  .founder-initials {
+    width: 64px; height: 64px; border-radius: 50%;
+    background: rgba(255,255,255,0.15);
+    border: 2px solid rgba(255,255,255,0.3);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--serif); font-size: 1.3rem; font-weight: 700;
+    color: var(--white);
+    position: absolute; top: 1.5rem; left: 1.5rem;
+  }
+
+  .founder-tag {
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 50px;
+    padding: 0.3rem 0.75rem;
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--white);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .founder-info {
+    background: var(--white);
+    padding: 1.25rem;
+  }
+
+  .founder-name {
+    font-family: var(--serif);
+    font-size: 1.1rem; font-weight: 700; color: var(--deep);
+    margin-bottom: 0.2rem;
+  }
+
+  .founder-role {
+    font-size: 0.75rem; font-weight: 600; color: var(--accent);
+    margin-bottom: 0.6rem;
+    text-transform: uppercase; letter-spacing: 0.05em;
+  }
+
+  .founder-bio {
+    font-size: 0.8rem; color: var(--muted); line-height: 1.55;
+  }
+
+  /* CONTACT */
+  .contact {
+    background: var(--cream);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  .contact-form {
+    background: var(--white);
+    border-radius: 24px;
+    padding: 2.5rem;
+    border: 1px solid var(--border);
+    box-shadow: 0 4px 40px rgba(0,0,0,0.04);
+  }
+
+  .form-title {
+    font-family: var(--serif);
+    font-size: 1.5rem; font-weight: 700; color: var(--deep);
+    margin-bottom: 1.75rem;
+  }
+
+  .form-group { margin-bottom: 1.25rem; }
+
+  .form-label {
+    display: block;
+    font-size: 0.8rem; font-weight: 600; color: var(--deep);
+    margin-bottom: 0.5rem; letter-spacing: 0.02em;
+  }
+
+  .form-input, .form-textarea, .form-select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 12px;
+    border: 1.5px solid var(--border);
+    font-family: var(--sans);
+    font-size: 0.9rem;
+    color: var(--text);
+    background: var(--cream);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .form-input:focus, .form-textarea:focus, .form-select:focus {
+    border-color: var(--accent);
+  }
+
+  .form-textarea { min-height: 120px; resize: vertical; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  .form-submit {
+    width: 100%;
+    background: var(--accent);
+    color: var(--white);
+    border: none; cursor: pointer;
+    padding: 0.9rem;
+    border-radius: 12px;
+    font-family: var(--sans);
+    font-size: 0.95rem; font-weight: 600;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-top: 0.5rem;
+  }
+
+  .form-submit:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(232,99,58,0.3); }
+
+  .contact-info { padding-top: 0.5rem; }
+
+  .contact-info-cards {
+    display: flex; flex-direction: column; gap: 1rem;
+    margin-top: 2.5rem;
+  }
+
+  .ci-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 1.25rem 1.5rem;
+    border: 1px solid var(--border);
+    display: flex; align-items: center; gap: 1rem;
+  }
+
+  .ci-icon {
+    width: 44px; height: 44px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; flex-shrink: 0;
+  }
+
+  .ci-label { font-size: 0.7rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+  .ci-value { font-size: 0.9rem; font-weight: 500; color: var(--deep); margin-top: 0.1rem; }
+
+  /* FOOTER */
+  footer {
+    background: var(--deep);
+    color: rgba(255,255,255,0.6);
+    padding: 3rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-logo {
+    font-family: var(--serif);
+    font-size: 1.2rem; font-weight: 700; color: var(--white);
+  }
+
+  .footer-logo span { color: var(--accent); }
+
+  .footer-links {
+    display: flex; gap: 1.5rem; list-style: none;
+  }
+
+  .footer-links a {
+    font-size: 0.8rem; color: rgba(255,255,255,0.5);
+    text-decoration: none; transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--white); }
+
+  .footer-copy { font-size: 0.75rem; color: rgba(255,255,255,0.3); }
+
+  /* SCROLL ANIMATIONS */
+  .fade-in {
+    opacity: 0; transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    section { padding: 4rem 1.5rem; }
+    .hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 3rem; text-align: center; }
+    .hero-subtitle { margin: 0 auto 2.5rem; }
+    .hero-buttons { justify-content: center; }
+    .hero-visual { display: none; }
+    .stats-bar { padding: 2rem 1.5rem; }
+    .stat-divider { display: none; }
+    .about { grid-template-columns: 1fr; gap: 3rem; }
+    .about-visual { display: none; }
+    .wwd-grid { grid-template-columns: 1fr; }
+    .app-section { grid-template-columns: 1fr; gap: 3rem; }
+    .founders-grid { grid-template-columns: 1fr 1fr; }
+    .founders-intro { flex-direction: column; align-items: flex-start; }
+    .contact { grid-template-columns: 1fr; gap: 3rem; }
+    footer { flex-direction: column; text-align: center; padding: 2rem 1.5rem; }
+  }
+
+  @media (max-width: 500px) {
+    .founders-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .about-pillars { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Totspark<span>.</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#what-we-do">What We Do</a></li>
+    <li><a href="#app">Our App</a></li>
+    <li><a href="#founders">Founders</a></li>
+    <li><a href="#contact" class="nav-cta">Get In Touch</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <div class="hero-tag">Exclusive Kids Tech & Events</div>
+    <h1 class="hero-title">
+      Where Young<br>Minds <span class="highlight">Ignite</span><br>& Thrive
+    </h1>
+    <p class="hero-subtitle">
+      Totspark Collective is a premium technology and event curation company crafting extraordinary experiences for children — blending innovation, education, and joy into every engagement.
+    </p>
+    <div class="hero-buttons">
+      <a href="#what-we-do" class="btn-primary">Explore What We Do</a>
+      <a href="#contact" class="btn-secondary">Partner With Us</a>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="hero-card-stack">
+      <div class="hcard hcard-stat hcard-stat-1">
+        <div class="hcard-icon" style="background:#FFF0EB;">🎯</div>
+        <div class="hcard-stat-num">500+</div>
+        <div class="hcard-stat-txt">Events Curated</div>
+      </div>
+      <div class="hcard hcard-main">
+        <div>
+          <div class="hcard-main-label">Young Minds Reached</div>
+          <div class="hcard-main-num">12K+</div>
+          <div class="hcard-main-sub">across 8 cities in India</div>
+        </div>
+        <div style="display:flex;gap:0.5rem;">
+          <div style="background:rgba(255,255,255,0.1);border-radius:8px;padding:0.5rem 0.75rem;font-size:0.7rem;color:rgba(255,255,255,0.7);">Tech Camps</div>
+          <div style="background:var(--accent);border-radius:8px;padding:0.5rem 0.75rem;font-size:0.7rem;color:#fff;">Live Events</div>
+        </div>
+      </div>
+      <div class="hcard hcard-stat hcard-stat-2">
+        <div class="hcard-icon" style="background:#E8F9F5;">✦</div>
+        <div class="hcard-stat-num">4.9★</div>
+        <div class="hcard-stat-txt">Parent Satisfaction</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <span class="stat-num">12K+</span>
+    <span class="stat-label">Children Engaged</span>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-item">
+    <span class="stat-num">500+</span>
+    <span class="stat-label">Events Organised</span>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-item">
+    <span class="stat-num">8</span>
+    <span class="stat-label">Cities Across India</span>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-item">
+    <span class="stat-num">200+</span>
+    <span class="stat-label">Brand Partners</span>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-item">
+    <span class="stat-num">4.9★</span>
+    <span class="stat-label">Average Rating</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-visual fade-in">
+    <div class="about-img-placeholder">
+      <div class="about-orb">
+        <div class="about-orb-inner">Tots<br>spark</div>
+      </div>
+      <div class="about-badge ab1">Est. 2023</div>
+      <div class="about-badge ab2" style="background:var(--accent2);">India's First</div>
+    </div>
+  </div>
+  <div class="fade-in">
+    <span class="section-tag">About Us</span>
+    <h2 class="section-title">A New Standard for Children's Experiences</h2>
+    <p class="section-body">
+      Totspark Collective was born from a simple belief — that every child deserves access to world-class experiences that nurture curiosity, creativity, and confidence. We are India's first exclusive kids tech and event management collective, built by parents, educators, and innovators who refused to settle for ordinary.
+    </p>
+    <p class="section-body" style="margin-top:1rem;">
+      We don't just plan events. We architect memories, build skills, and connect families to a curated ecosystem of premium experiences designed specifically for the young and the extraordinary.
+    </p>
+    <div class="about-pillars">
+      <div class="pillar">
+        <div class="pillar-icon" style="background:#FFF0EB;">🔬</div>
+        <div class="pillar-title">Innovation-Led</div>
+        <div class="pillar-text">Bringing cutting-edge tech to children's programming</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon" style="background:#E8F9F5;">🌱</div>
+        <div class="pillar-title">Impact-Driven</div>
+        <div class="pillar-text">Every experience is designed for real developmental growth</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon" style="background:#FFF9E6;">✦</div>
+        <div class="pillar-title">Curated Quality</div>
+        <div class="pillar-text">Only the finest speakers, venues, and experiences</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon" style="background:#F0EEFF;">🤝</div>
+        <div class="pillar-title">Community First</div>
+        <div class="pillar-text">Building a collective of inspired families</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE DO -->
+<section class="what-we-do" id="what-we-do">
+  <div class="fade-in" style="text-align:center; max-width:640px; margin:0 auto 1rem;">
+    <span class="section-tag">What We Do</span>
+    <h2 class="section-title">Six Ways We Spark Potential</h2>
+    <p class="section-body" style="margin:0 auto;">From intimate workshops to large-scale festivals, we deliver premium experiences that parents trust and children love.</p>
+  </div>
+  <div class="wwd-grid fade-in">
+    <div class="wwd-card">
+      <div class="wwd-num">01</div>
+      <span class="wwd-icon">🎪</span>
+      <div class="wwd-title">Exclusive Event Curation</div>
+      <div class="wwd-text">End-to-end curation of premium children's events — from concept to execution. We handle thematic design, vendor selection, and flawless delivery.</div>
+    </div>
+    <div class="wwd-card">
+      <div class="wwd-num">02</div>
+      <span class="wwd-icon">🤖</span>
+      <div class="wwd-title">Kids Tech Experiences</div>
+      <div class="wwd-text">Hands-on robotics camps, AI workshops, coding bootcamps, and STEM festivals tailored for children aged 4–16, made accessible and thrilling.</div>
+    </div>
+    <div class="wwd-card">
+      <div class="wwd-num">03</div>
+      <span class="wwd-icon">🏆</span>
+      <div class="wwd-title">Corporate Kids Days</div>
+      <div class="wwd-text">Crafting memorable family engagement programs for corporate houses — structured, branded, and crafted to reflect your organisation's values.</div>
+    </div>
+    <div class="wwd-card">
+      <div class="wwd-num">04</div>
+      <span class="wwd-icon">🎓</span>
+      <div class="wwd-title">School & Institution Tie-Ups</div>
+      <div class="wwd-text">Partnering with schools to deliver curriculum-adjacent experiences that enrich classroom learning with real-world exposure and inspiration.</div>
+    </div>
+    <div class="wwd-card">
+      <div class="wwd-num">05</div>
+      <span class="wwd-icon">🌟</span>
+      <div class="wwd-title">Signature Festivals</div>
+      <div class="wwd-text">Large-format annual festivals that celebrate childhood — with performances, competitions, exhibitions, and community. Events families look forward to all year.</div>
+    </div>
+    <div class="wwd-card">
+      <div class="wwd-num">06</div>
+      <span class="wwd-icon">📲</span>
+      <div class="wwd-title">Digital Platform & App</div>
+      <div class="wwd-text">Our proprietary app lets families discover, book, and track curated events. One destination for every Totspark experience, wherever you are.</div>
+    </div>
+  </div>
+</section>
+
+<!-- APP -->
+<section class="app-section" id="app">
+  <div class="fade-in">
+    <span class="section-tag">Our Product</span>
+    <h2 class="section-title">The Totspark App — Discovery Reimagined</h2>
+    <p class="section-body">
+      Our platform is built for the modern family — a curated discovery engine that surfaces only the best experiences, with seamless booking and personalised recommendations for every child.
+    </p>
+    <ul class="app-features">
+      <li>
+        <div class="app-check">✓</div>
+        <span><strong style="color:#fff;">Smart Discovery</strong> — AI-powered recommendations based on your child's age, interests, and learning goals</span>
+      </li>
+      <li>
+        <div class="app-check">✓</div>
+        <span><strong style="color:#fff;">One-Tap Booking</strong> — Reserve spots at events with real-time availability and instant confirmation</span>
+      </li>
+      <li>
+        <div class="app-check">✓</div>
+        <span><strong style="color:#fff;">Progress Journals</strong> — Track your child's milestones and memories from every experience</span>
+      </li>
+      <li>
+        <div class="app-check">✓</div>
+        <span><strong style="color:#fff;">Exclusive Member Access</strong> — Priority booking and early-bird offers for Totspark members</span>
+      </li>
+      <li>
+        <div class="app-check">✓</div>
+        <span><strong style="color:#fff;">Safety Verified</strong> — Every event partner is rigorously vetted for safety and quality standards</span>
+      </li>
+    </ul>
+    <div class="app-badges">
+      <div class="app-badge">📱 iOS & Android</div>
+      <div class="app-badge">🌐 Web Platform</div>
+      <div class="app-badge">🔔 Launching 2025</div>
+    </div>
+  </div>
+
+  <div class="fade-in app-mockup">
+    <div class="phone-frame">
+      <div class="phone-screen">
+        <div class="ps-header">
+          <div class="ps-header-label">Good Morning, Priya ✦</div>
+          <div class="ps-header-title">3 events near you</div>
+        </div>
+        <div class="ps-event">
+          <div class="ps-event-dot" style="background:#E8633A;"></div>
+          <div>
+            <div class="ps-event-name">Robotics Bootcamp</div>
+            <div class="ps-event-date">Sat, May 10 · Koramangala</div>
+          </div>
+        </div>
+        <div class="ps-event">
+          <div class="ps-event-dot" style="background:#4BBFA6;"></div>
+          <div>
+            <div class="ps-event-name">AI Art Workshop</div>
+            <div class="ps-event-date">Sun, May 11 · Indiranagar</div>
+          </div>
+        </div>
+        <div class="ps-event">
+          <div class="ps-event-dot" style="background:#F5C842;"></div>
+          <div>
+            <div class="ps-event-name">Totspark Science Fest</div>
+            <div class="ps-event-date">May 17–18 · Palace Grounds</div>
+          </div>
+        </div>
+        <div class="ps-bottom">
+          <div class="ps-mini-card">
+            <div class="ps-mini-num">12</div>
+            <div class="ps-mini-txt">Events attended</div>
+          </div>
+          <div class="ps-mini-card" style="background:var(--accent);">
+            <div class="ps-mini-num">Gold</div>
+            <div class="ps-mini-txt">Member tier</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDERS -->
+<section class="founders" id="founders">
+  <div class="founders-intro fade-in">
+    <div>
+      <span class="section-tag">The Team</span>
+      <h2 class="section-title">Built by Visionaries,<br>Driven by Purpose</h2>
+    </div>
+    <p style="max-width:360px;color:var(--muted);font-size:0.95rem;line-height:1.7;">Four founders with complementary expertise, united by a shared conviction that children deserve extraordinary.</p>
+  </div>
+
+  <div class="founders-grid fade-in">
+    <div class="founder-card fc1">
+      <div class="founder-avatar">
+        <div class="founder-initials">AR</div>
+        <div class="founder-tag">Co-Founder & CEO</div>
+      </div>
+      <div class="founder-info">
+        <div class="founder-name">Arjun Rathore</div>
+        <div class="founder-role">Chief Executive Officer</div>
+        <div class="founder-bio">Former product lead at a Bengaluru ed-tech unicorn, Arjun brings 10+ years of scaling consumer platforms. He architects Totspark's vision and growth strategy.</div>
+      </div>
+    </div>
+
+    <div class="founder-card fc2">
+      <div class="founder-avatar">
+        <div class="founder-initials">SM</div>
+        <div class="founder-tag">Co-Founder & COO</div>
+      </div>
+      <div class="founder-info">
+        <div class="founder-name">Sneha Mehta</div>
+        <div class="founder-role">Chief Operations Officer</div>
+        <div class="founder-bio">With a background in luxury event management and a decade producing large-scale children's festivals, Sneha ensures every Totspark experience is flawless.</div>
+      </div>
+    </div>
+
+    <div class="founder-card fc3">
+      <div class="founder-avatar">
+        <div class="founder-initials">VK</div>
+        <div class="founder-tag">Co-Founder & CTO</div>
+      </div>
+      <div class="founder-info">
+        <div class="founder-name">Vikram Krishnan</div>
+        <div class="founder-role">Chief Technology Officer</div>
+        <div class="founder-bio">Full-stack engineer and former IIT Madras researcher, Vikram leads the development of the Totspark platform — building the tech infrastructure that powers the collective.</div>
+      </div>
+    </div>
+
+    <div class="founder-card fc4">
+      <div class="founder-avatar">
+        <div class="founder-initials">PD</div>
+        <div class="founder-tag">Co-Founder & CMO</div>
+      </div>
+      <div class="founder-info">
+        <div class="founder-name">Priya Desai</div>
+        <div class="founder-role">Chief Marketing Officer</div>
+        <div class="founder-bio">Brand strategist and community builder, Priya shaped consumer brands before turning her focus to building India's most loved kids-first community at Totspark.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="fade-in">
+    <span class="section-tag">Contact Us</span>
+    <h2 class="section-title">Let's Build Something Extraordinary Together</h2>
+    <p class="section-body">Whether you're a parent, a brand, a school, or an investor — we'd love to connect. Reach out and a member of our team will respond within 24 hours.</p>
+
+    <div class="contact-info-cards">
+      <div class="ci-card">
+        <div class="ci-icon" style="background:#FFF0EB;">📍</div>
+        <div>
+          <div class="ci-label">Headquarters</div>
+          <div class="ci-value">Indiranagar, Bengaluru, Karnataka 560038</div>
+        </div>
+      </div>
+      <div class="ci-card">
+        <div class="ci-icon" style="background:#E8F9F5;">✉️</div>
+        <div>
+          <div class="ci-label">Email Us</div>
+          <div class="ci-value">hello@totssparkcollective.in</div>
+        </div>
+      </div>
+      <div class="ci-card">
+        <div class="ci-icon" style="background:#FFF9E6;">📞</div>
+        <div>
+          <div class="ci-label">Call Us</div>
+          <div class="ci-value">+91 98765 43210</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-form fade-in">
+    <div class="form-title">Send Us a Message</div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">First Name</label>
+        <input class="form-input" type="text" placeholder="Riya" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">Last Name</label>
+        <input class="form-input" type="text" placeholder="Sharma" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Email Address</label>
+      <input class="form-input" type="email" placeholder="riya@example.com" />
+    </div>
+    <div class="form-group">
+      <label class="form-label">I'm reaching out as a...</label>
+      <select class="form-select">
+        <option>Parent / Guardian</option>
+        <option>School / Institution</option>
+        <option>Corporate / Brand</option>
+        <option>Investor</option>
+        <option>Media / Press</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Message</label>
+      <textarea class="form-textarea" placeholder="Tell us a little about what you're looking for..."></textarea>
+    </div>
+    <button class="form-submit">Send Message →</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Totspark<span>.</span> Collective</div>
+  <ul class="footer-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#what-we-do">Services</a></li>
+    <li><a href="#app">App</a></li>
+    <li><a href="#founders">Team</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="footer-copy">© 2025 Totspark Collective Pvt. Ltd. All rights reserved.</div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  document.querySelector('.form-submit').addEventListener('click', function() {
+    this.textContent = 'Message Sent ✓';
+    this.style.background = '#4BBFA6';
+    setTimeout(() => {
+      this.textContent = 'Send Message →';
+      this.style.background = '';
+    }, 3000);
+  });
+</script>
+</body>
+</html>
