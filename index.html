@@ -1,1061 +1,681 @@
-<!DOCTYPE html>
+html = """<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Totspark Collective — Creating Magical Moments </title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<title>Totspark Collective — Creating Magical Moments</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-  :root {
-    --cream: #FAF8F3;
-    --deep: #1A1A2E;
-    --accent: #E8633A;
-    --accent2: #4BBFA6;
-    --accent3: #F5C842;
-    --soft: #F2EDE4;
-    --text: #2C2C3A;
-    --muted: #7A7A8C;
-    --white: #FFFFFF;
-    --border: rgba(44,44,58,0.1);
-    --serif: 'Playfair Display', Georgia, serif;
-    --sans: 'DM Sans', sans-serif;
-  }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: var(--sans);
-    background: var(--cream);
-    color: var(--text);
-    line-height: 1.6;
-    overflow-x: hidden;
-  }
-
-  /* NAV */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 1.2rem 4rem;
-    background: rgba(250,248,243,0.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .nav-logo {
-    font-family: var(--serif);
-    font-size: 1.35rem;
-    font-weight: 700;
-    color: var(--deep);
-    letter-spacing: -0.5px;
-  }
-
-  .nav-logo span { color: var(--accent); }
-
-  .nav-links {
-    display: flex; gap: 2.5rem; list-style: none;
-  }
-
-  .nav-links a {
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: var(--muted);
-    text-decoration: none;
-    letter-spacing: 0.03em;
-    transition: color 0.2s;
-  }
-
-  .nav-links a:hover { color: var(--accent); }
-
-  .nav-cta {
-    background: var(--deep);
-    color: var(--white) !important;
-    padding: 0.6rem 1.4rem;
-    border-radius: 50px;
-    transition: background 0.2s !important;
-  }
-
-  .nav-cta:hover { background: var(--accent) !important; color: var(--white) !important; }
-
-  /* HERO */
-  .hero {
-    min-height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    padding: 8rem 4rem 4rem;
-    gap: 4rem;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: -100px; right: -100px;
-    width: 600px; height: 600px;
-    background: radial-gradient(circle, rgba(232,99,58,0.08) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  .hero::after {
-    content: '';
-    position: absolute;
-    bottom: -80px; left: 20%;
-    width: 400px; height: 400px;
-    background: radial-gradient(circle, rgba(75,191,166,0.07) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  .hero-tag {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    background: var(--soft);
-    border: 1px solid var(--border);
-    border-radius: 50px;
-    padding: 0.4rem 1rem;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 1.5rem;
-  }
-
-  .hero-tag::before { content: '◆'; font-size: 0.6rem; }
-
-  .hero-title {
-    font-family: var(--serif);
-    font-size: clamp(2.8rem, 4.5vw, 4.2rem);
-    font-weight: 700;
-    line-height: 1.1;
-    color: var(--deep);
-    margin-bottom: 1.5rem;
-    letter-spacing: -1px;
-  }
-
-  .hero-title .highlight {
-    color: var(--accent);
-    font-style: italic;
-  }
-
-  .hero-subtitle {
-    font-size: 1.05rem;
-    color: var(--muted);
-    font-weight: 400;
-    max-width: 480px;
-    margin-bottom: 2.5rem;
-    line-height: 1.75;
-  }
-
-  .hero-buttons {
-    display: flex; gap: 1rem; flex-wrap: wrap;
-  }
-
-  .btn-primary {
-    background: var(--accent);
-    color: var(--white);
-    padding: 0.85rem 2rem;
-    border-radius: 50px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    text-decoration: none;
-    transition: transform 0.2s, box-shadow 0.2s;
-    display: inline-block;
-  }
-
-  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(232,99,58,0.3); }
-
-  .btn-secondary {
-    background: transparent;
-    color: var(--deep);
-    padding: 0.85rem 2rem;
-    border-radius: 50px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    text-decoration: none;
-    border: 1.5px solid var(--border);
-    transition: border-color 0.2s, color 0.2s;
-    display: inline-block;
-  }
-
-  .btn-secondary:hover { border-color: var(--deep); }
-
-  .hero-visual {
-    position: relative;
-    display: flex; align-items: center; justify-content: center;
-  }
-
-  .hero-card-stack {
-    position: relative;
-    width: 400px; height: 420px;
-  }
-
-  .hcard {
-    position: absolute;
-    border-radius: 20px;
-    padding: 1.5rem;
-    box-shadow: 0 4px 32px rgba(0,0,0,0.07);
-  }
-
-  .hcard-main {
-    background: var(--deep);
-    width: 280px; height: 320px;
-    top: 40px; left: 60px;
-    display: flex; flex-direction: column; justify-content: space-between;
-    animation: float 4s ease-in-out infinite;
-  }
-
-  @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
-
-  .hcard-main-label {
-    font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
-    color: rgba(255,255,255,0.5); font-weight: 600;
-  }
-
-  .hcard-main-num {
-    font-family: var(--serif);
-    font-size: 3.5rem; font-weight: 700;
-    color: var(--white); line-height: 1;
-  }
-
-  .hcard-main-sub {
-    font-size: 0.85rem; color: rgba(255,255,255,0.7);
-  }
-
-  .hcard-stat {
-    background: var(--white);
-    border: 1px solid var(--border);
-    width: 150px; padding: 1rem;
-    border-radius: 16px;
-    animation: float 4s ease-in-out infinite 0.5s;
-  }
-
-  .hcard-stat-1 { top: 0; left: 0; }
-  .hcard-stat-2 { bottom: 0; right: 0; animation-delay: 1s !important; }
-
-  .hcard-icon {
-    width: 36px; height: 36px; border-radius: 10px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1.1rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .hcard-stat-num { font-family: var(--serif); font-size: 1.5rem; font-weight: 700; color: var(--deep); }
-  .hcard-stat-txt { font-size: 0.72rem; color: var(--muted); font-weight: 500; }
-
-  /* STATS BAR */
-  .stats-bar {
-    background: var(--deep);
-    padding: 2rem 4rem;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    gap: 2rem;
-    flex-wrap: wrap;
-  }
-
-  .stat-item { text-align: center; }
-
-  .stat-num {
-    font-family: var(--serif);
-    font-size: 2.2rem;
-    font-weight: 700;
-    color: var(--white);
-    display: block;
-    line-height: 1;
-  }
-
-  .stat-label {
-    font-size: 0.8rem;
-    color: rgba(255,255,255,0.5);
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    margin-top: 0.3rem;
-    display: block;
-  }
-
-  .stat-divider {
-    width: 1px; height: 40px;
-    background: rgba(255,255,255,0.1);
-  }
-
-  /* SECTION SHARED */
-  section { padding: 6rem 4rem; }
-
-  .section-tag {
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--accent2);
-    margin-bottom: 0.75rem;
-    display: block;
-  }
-
-  .section-title {
-    font-family: var(--serif);
-    font-size: clamp(2rem, 3.5vw, 3rem);
-    font-weight: 700;
-    color: var(--deep);
-    line-height: 1.15;
-    letter-spacing: -0.5px;
-    margin-bottom: 1.25rem;
-  }
-
-  .section-body {
-    font-size: 1.05rem;
-    color: var(--muted);
-    line-height: 1.8;
-    max-width: 600px;
-  }
-
-  /* ABOUT */
-  .about {
-    background: var(--white);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6rem;
-    align-items: center;
-  }
-
-  .about-visual {
-    position: relative;
-  }
-
-  .about-img-placeholder {
-    background: linear-gradient(135deg, #1A1A2E 0%, #2D2D5E 100%);
-    border-radius: 24px;
-    height: 420px;
-    display: flex; align-items: center; justify-content: center;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .about-img-placeholder::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  }
-
-  .about-orb {
-    width: 180px; height: 180px;
-    border-radius: 50%;
-    background: conic-gradient(var(--accent) 0deg, var(--accent2) 120deg, var(--accent3) 240deg, var(--accent) 360deg);
-    display: flex; align-items: center; justify-content: center;
-    animation: spin 12s linear infinite;
-    position: relative;
-  }
-
-  @keyframes spin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
-
-  .about-orb-inner {
-    width: 130px; height: 130px;
-    border-radius: 50%;
-    background: var(--deep);
-    display: flex; align-items: center; justify-content: center;
-    font-family: var(--serif);
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--white);
-    animation: spin 12s linear infinite reverse;
-    text-align: center;
-    line-height: 1.3;
-  }
-
-  .about-badge {
-    position: absolute;
-    background: var(--accent);
-    color: var(--white);
-    padding: 0.75rem 1.25rem;
-    border-radius: 14px;
-    font-size: 0.8rem;
-    font-weight: 600;
-  }
-
-  .ab1 { top: 20px; right: -20px; }
-  .ab2 { bottom: 30px; left: -20px; }
-
-  .about-pillars {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
-    margin-top: 2rem;
-  }
-
-  .pillar {
-    background: var(--soft);
-    border-radius: 16px;
-    padding: 1.25rem;
-    border: 1px solid var(--border);
-  }
-
-  .pillar-icon {
-    width: 40px; height: 40px;
-    border-radius: 10px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1.2rem;
-    margin-bottom: 0.75rem;
-  }
-
-  .pillar-title {
-    font-size: 0.9rem; font-weight: 600; color: var(--deep);
-    margin-bottom: 0.25rem;
-  }
-
-  .pillar-text { font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
-
-  /* WHAT WE DO */
-  .what-we-do { background: var(--cream); }
-
-  .wwd-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    margin-top: 3rem;
-  }
-
-  .wwd-card {
-    background: var(--white);
-    border-radius: 20px;
-    padding: 2rem;
-    border: 1px solid var(--border);
-    transition: transform 0.25s, box-shadow 0.25s;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .wwd-card::before {
-    content: '';
-    position: absolute; top: 0; left: 0; right: 0; height: 4px;
-    border-radius: 20px 20px 0 0;
-  }
-
-  .wwd-card:nth-child(1)::before { background: var(--accent); }
-  .wwd-card:nth-child(2)::before { background: var(--accent2); }
-  .wwd-card:nth-child(3)::before { background: var(--accent3); }
-  .wwd-card:nth-child(4)::before { background: var(--accent2); }
-  .wwd-card:nth-child(5)::before { background: var(--accent); }
-  .wwd-card:nth-child(6)::before { background: var(--accent3); }
-
-  .wwd-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,0.08); }
-
-  .wwd-num {
-    font-family: var(--serif);
-    font-size: 3rem; font-weight: 700;
-    color: var(--soft);
-    position: absolute; top: 1rem; right: 1.5rem;
-    line-height: 1;
-  }
-
-  .wwd-icon {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-    display: block;
-  }
-
-  .wwd-title {
-    font-size: 1.1rem; font-weight: 600; color: var(--deep);
-    margin-bottom: 0.5rem;
-  }
-
-  .wwd-text { font-size: 0.875rem; color: var(--muted); line-height: 1.6; }
-
-  /* APP */
-  .app-section {
-    background: var(--deep);
-    color: var(--white);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6rem;
-    align-items: center;
-  }
-
-  .app-section .section-tag { color: var(--accent3); }
-  .app-section .section-title { color: var(--white); }
-  .app-section .section-body { color: rgba(255,255,255,0.6); }
-
-  .app-features {
-    list-style: none;
-    margin-top: 2rem;
-    display: flex; flex-direction: column; gap: 1rem;
-  }
-
-  .app-features li {
-    display: flex; align-items: flex-start; gap: 0.75rem;
-    font-size: 0.9rem; color: rgba(255,255,255,0.8);
-  }
-
-  .app-check {
-    width: 22px; height: 22px;
-    border-radius: 50%;
-    background: var(--accent2);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 0.65rem; color: white;
-    flex-shrink: 0; margin-top: 1px;
-  }
-
-  .app-mockup {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 28px;
-    padding: 2rem;
-    position: relative;
-  }
-
-  .phone-frame {
-    background: #111;
-    border-radius: 36px;
-    padding: 1rem;
-    width: 220px; height: 420px;
-    margin: 0 auto;
-    position: relative;
-    border: 2px solid rgba(255,255,255,0.1);
-    display: flex; flex-direction: column; overflow: hidden;
-  }
-
-  .phone-screen {
-    background: var(--cream);
-    flex: 1; border-radius: 28px;
-    padding: 1rem; overflow: hidden;
-  }
-
-  .ps-header {
-    background: var(--accent);
-    border-radius: 12px;
-    padding: 0.75rem;
-    margin-bottom: 0.75rem;
-  }
-
-  .ps-header-label { font-size: 0.55rem; font-weight: 700; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 0.1em; }
-  .ps-header-title { font-family: var(--serif); font-size: 0.85rem; font-weight: 700; color: var(--white); margin-top: 0.1rem; }
-
-  .ps-event {
-    background: var(--white);
-    border-radius: 10px;
-    padding: 0.6rem;
-    margin-bottom: 0.5rem;
-    border: 1px solid var(--border);
-    display: flex; align-items: center; gap: 0.5rem;
-  }
-
-  .ps-event-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
-  .ps-event-name { font-size: 0.6rem; font-weight: 600; color: var(--deep); }
-  .ps-event-date { font-size: 0.55rem; color: var(--muted); }
-
-  .ps-bottom {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;
-    margin-top: 0.5rem;
-  }
-
-  .ps-mini-card {
-    background: var(--deep);
-    border-radius: 10px; padding: 0.6rem;
-    text-align: center;
-  }
-
-  .ps-mini-num { font-family: var(--serif); font-size: 0.85rem; font-weight: 700; color: var(--white); }
-  .ps-mini-txt { font-size: 0.5rem; color: rgba(255,255,255,0.5); }
-
-  .app-badges {
-    display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap;
-  }
-
-  .app-badge {
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 12px;
-    padding: 0.6rem 1rem;
-    font-size: 0.8rem;
-    color: rgba(255,255,255,0.8);
-    font-weight: 500;
-  }
-
-  /* FOUNDERS */
-  .founders { background: var(--white); }
-
-  .founders-intro {
-    display: flex; justify-content: space-between; align-items: flex-end;
-    gap: 2rem; margin-bottom: 3rem;
-  }
-
-  .founders-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.5rem;
-  }
-
-  .founder-card {
-    border-radius: 20px;
-    overflow: hidden;
-    border: 1px solid var(--border);
-    transition: transform 0.25s;
-  }
-
-  .founder-card:hover { transform: translateY(-6px); }
-
-  .founder-avatar {
-    height: 200px;
-    display: flex; align-items: flex-end;
-    padding: 1.5rem;
-    position: relative;
-  }
-
-  .fc1 .founder-avatar { background: linear-gradient(135deg, #1A1A2E 0%, #E8633A 100%); }
-  .fc2 .founder-avatar { background: linear-gradient(135deg, #1A1A2E 0%, #4BBFA6 100%); }
-  .fc3 .founder-avatar { background: linear-gradient(135deg, #1A1A2E 0%, #F5C842 100%); }
-  .fc4 .founder-avatar { background: linear-gradient(135deg, #1A1A2E 0%, #E8633A 60%, #4BBFA6 100%); }
-
-  .founder-initials {
-    width: 64px; height: 64px; border-radius: 50%;
-    background: rgba(255,255,255,0.15);
-    border: 2px solid rgba(255,255,255,0.3);
-    display: flex; align-items: center; justify-content: center;
-    font-family: var(--serif); font-size: 1.3rem; font-weight: 700;
-    color: var(--white);
-    position: absolute; top: 1.5rem; left: 1.5rem;
-  }
-
-  .founder-tag {
-    background: rgba(255,255,255,0.15);
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 50px;
-    padding: 0.3rem 0.75rem;
-    font-size: 0.65rem;
-    font-weight: 600;
-    color: var(--white);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-  }
-
-  .founder-info {
-    background: var(--white);
-    padding: 1.25rem;
-  }
-
-  .founder-name {
-    font-family: var(--serif);
-    font-size: 1.1rem; font-weight: 700; color: var(--deep);
-    margin-bottom: 0.2rem;
-  }
-
-  .founder-role {
-    font-size: 0.75rem; font-weight: 600; color: var(--accent);
-    margin-bottom: 0.6rem;
-    text-transform: uppercase; letter-spacing: 0.05em;
-  }
-
-  .founder-bio {
-    font-size: 0.8rem; color: var(--muted); line-height: 1.55;
-  }
-
-  /* CONTACT */
-  .contact {
-    background: var(--cream);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6rem;
-    align-items: start;
-  }
-
-  .contact-form {
-    background: var(--white);
-    border-radius: 24px;
-    padding: 2.5rem;
-    border: 1px solid var(--border);
-    box-shadow: 0 4px 40px rgba(0,0,0,0.04);
-  }
-
-  .form-title {
-    font-family: var(--serif);
-    font-size: 1.5rem; font-weight: 700; color: var(--deep);
-    margin-bottom: 1.75rem;
-  }
-
-  .form-group { margin-bottom: 1.25rem; }
-
-  .form-label {
-    display: block;
-    font-size: 0.8rem; font-weight: 600; color: var(--deep);
-    margin-bottom: 0.5rem; letter-spacing: 0.02em;
-  }
-
-  .form-input, .form-textarea, .form-select {
-    width: 100%;
-    padding: 0.75rem 1rem;
-    border-radius: 12px;
-    border: 1.5px solid var(--border);
-    font-family: var(--sans);
-    font-size: 0.9rem;
-    color: var(--text);
-    background: var(--cream);
-    outline: none;
-    transition: border-color 0.2s;
-  }
-
-  .form-input:focus, .form-textarea:focus, .form-select:focus {
-    border-color: var(--accent);
-  }
-
-  .form-textarea { min-height: 120px; resize: vertical; }
-
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-
-  .form-submit {
-    width: 100%;
-    background: var(--accent);
-    color: var(--white);
-    border: none; cursor: pointer;
-    padding: 0.9rem;
-    border-radius: 12px;
-    font-family: var(--sans);
-    font-size: 0.95rem; font-weight: 600;
-    transition: transform 0.2s, box-shadow 0.2s;
-    margin-top: 0.5rem;
-  }
-
-  .form-submit:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(232,99,58,0.3); }
-
-  .contact-info { padding-top: 0.5rem; }
-
-  .contact-info-cards {
-    display: flex; flex-direction: column; gap: 1rem;
-    margin-top: 2.5rem;
-  }
-
-  .ci-card {
-    background: var(--white);
-    border-radius: 16px;
-    padding: 1.25rem 1.5rem;
-    border: 1px solid var(--border);
-    display: flex; align-items: center; gap: 1rem;
-  }
-
-  .ci-icon {
-    width: 44px; height: 44px; border-radius: 12px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1.1rem; flex-shrink: 0;
-  }
-
-  .ci-label { font-size: 0.7rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
-  .ci-value { font-size: 0.9rem; font-weight: 500; color: var(--deep); margin-top: 0.1rem; }
-
-  /* FOOTER */
-  footer {
-    background: var(--deep);
-    color: rgba(255,255,255,0.6);
-    padding: 3rem 4rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-
-  .footer-logo {
-    font-family: var(--serif);
-    font-size: 1.2rem; font-weight: 700; color: var(--white);
-  }
-
-  .footer-logo span { color: var(--accent); }
-
-  .footer-links {
-    display: flex; gap: 1.5rem; list-style: none;
-  }
-
-  .footer-links a {
-    font-size: 0.8rem; color: rgba(255,255,255,0.5);
-    text-decoration: none; transition: color 0.2s;
-  }
-
-  .footer-links a:hover { color: var(--white); }
-
-  .footer-copy { font-size: 0.75rem; color: rgba(255,255,255,0.3); }
-
-  /* SCROLL ANIMATIONS */
-  .fade-in {
-    opacity: 0; transform: translateY(24px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-  }
-
-  .fade-in.visible { opacity: 1; transform: translateY(0); }
-
-  /* RESPONSIVE */
-  @media (max-width: 900px) {
-    nav { padding: 1rem 1.5rem; }
-    .nav-links { display: none; }
-    section { padding: 4rem 1.5rem; }
-    .hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 3rem; text-align: center; }
-    .hero-subtitle { margin: 0 auto 2.5rem; }
-    .hero-buttons { justify-content: center; }
-    .hero-visual { display: none; }
-    .stats-bar { padding: 2rem 1.5rem; }
-    .stat-divider { display: none; }
-    .about { grid-template-columns: 1fr; gap: 3rem; }
-    .about-visual { display: none; }
-    .wwd-grid { grid-template-columns: 1fr; }
-    .app-section { grid-template-columns: 1fr; gap: 3rem; }
-    .founders-grid { grid-template-columns: 1fr 1fr; }
-    .founders-intro { flex-direction: column; align-items: flex-start; }
-    .contact { grid-template-columns: 1fr; gap: 3rem; }
-    footer { flex-direction: column; text-align: center; padding: 2rem 1.5rem; }
-  }
-
-  @media (max-width: 500px) {
-    .founders-grid { grid-template-columns: 1fr; }
-    .form-row { grid-template-columns: 1fr; }
-    .about-pillars { grid-template-columns: 1fr; }
-  }
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --sky:#4A8FBF;
+  --sky-dark:#2E6A96;
+  --sky-light:#D6EAF8;
+  --sky-pale:#EBF5FB;
+  --warm:#F5A623;
+  --warm-light:#FDF3DC;
+  --coral:#E8603A;
+  --teal:#3DBFA6;
+  --cream:#FAFAF7;
+  --deep:#1A2B3C;
+  --text:#2C3E50;
+  --muted:#6B7C8D;
+  --white:#FFFFFF;
+  --border:rgba(74,143,191,0.15);
+  --serif:'Syne',sans-serif;
+  --sans:'Nunito',sans-serif;
+}
+html{scroll-behavior:smooth;}
+body{font-family:var(--sans);background:var(--cream);color:var(--text);overflow-x:hidden;line-height:1.6;}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0.75rem 3rem;
+  background:rgba(255,255,255,0.95);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+  box-shadow:0 2px 20px rgba(74,143,191,0.08);
+}
+.nav-logo img{height:52px;display:block;}
+.nav-links{display:flex;gap:2.5rem;list-style:none;align-items:center;}
+.nav-links a{font-size:0.9rem;font-weight:700;color:var(--deep);text-decoration:none;letter-spacing:0.02em;transition:color 0.2s;}
+.nav-links a:hover{color:var(--sky);}
+.nav-cta{
+  background:var(--sky);color:var(--white) !important;
+  padding:0.55rem 1.4rem;border-radius:50px;
+  font-weight:800 !important;font-size:0.85rem !important;
+  transition:background 0.2s,transform 0.2s !important;
+  box-shadow:0 4px 14px rgba(74,143,191,0.35);
+}
+.nav-cta:hover{background:var(--sky-dark) !important;transform:translateY(-1px);}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;
+  background:linear-gradient(160deg, var(--sky) 0%, var(--sky-dark) 45%, #1A2B3C 100%);
+  display:grid;grid-template-columns:1fr 1fr;
+  align-items:center;
+  padding:7rem 3rem 4rem;
+  gap:3rem;
+  position:relative;
+  overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Ccircle cx='40' cy='40' r='1.5' fill='rgba(255,255,255,0.06)'/%3E%3C/g%3E%3C/svg%3E");
+  pointer-events:none;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  background:rgba(255,255,255,0.15);
+  border:1px solid rgba(255,255,255,0.25);
+  border-radius:50px;padding:0.4rem 1rem;
+  font-size:0.72rem;font-weight:800;
+  letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--warm);margin-bottom:1.5rem;
+}
+.hero-title{
+  font-family:var(--serif);font-size:clamp(2.8rem,4.5vw,4.5rem);
+  font-weight:800;line-height:1.05;color:var(--white);
+  margin-bottom:1.25rem;letter-spacing:-1px;
+}
+.hero-title .magic{color:var(--warm);font-style:italic;}
+.hero-title .magic2{color:#7FDBCA;}
+.hero-desc{
+  font-size:1.05rem;color:rgba(255,255,255,0.78);
+  max-width:480px;line-height:1.75;margin-bottom:2.25rem;font-weight:400;
+}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-hero-p{
+  background:var(--warm);color:var(--deep);
+  padding:0.85rem 2rem;border-radius:50px;
+  font-weight:800;font-size:0.9rem;text-decoration:none;
+  transition:transform 0.2s,box-shadow 0.2s;display:inline-block;
+  box-shadow:0 6px 20px rgba(245,166,35,0.4);
+}
+.btn-hero-p:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(245,166,35,0.5);}
+.btn-hero-s{
+  background:rgba(255,255,255,0.1);color:var(--white);
+  border:1.5px solid rgba(255,255,255,0.35);
+  padding:0.85rem 2rem;border-radius:50px;
+  font-weight:700;font-size:0.9rem;text-decoration:none;
+  transition:background 0.2s;display:inline-block;
+}
+.btn-hero-s:hover{background:rgba(255,255,255,0.18);}
+.hero-visual{position:relative;display:flex;align-items:center;justify-content:center;}
+.hero-img-wrap{
+  background:rgba(255,255,255,0.1);
+  border:1px solid rgba(255,255,255,0.2);
+  border-radius:28px;padding:1.5rem;
+  position:relative;
+}
+.hero-img-wrap img{width:100%;max-width:420px;border-radius:18px;display:block;}
+.hero-float-badge{
+  position:absolute;
+  background:var(--white);border-radius:16px;
+  padding:0.75rem 1.1rem;
+  box-shadow:0 8px 24px rgba(0,0,0,0.15);
+  font-weight:800;font-size:0.78rem;color:var(--deep);
+  display:flex;align-items:center;gap:0.5rem;
+}
+.hfb1{top:-16px;left:-20px;animation:fbob 3s ease-in-out infinite;}
+.hfb2{bottom:-16px;right:-20px;animation:fbob 3s ease-in-out infinite 1s;}
+@keyframes fbob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.hfb-dot{width:10px;height:10px;border-radius:50%;}
+
+/* ── MARQUEE ── */
+.marquee-wrap{
+  background:var(--warm);overflow:hidden;
+  padding:0.85rem 0;white-space:nowrap;
+}
+.marquee-track{
+  display:inline-flex;gap:3rem;
+  animation:marquee 18s linear infinite;
+}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.marquee-item{
+  font-family:var(--serif);font-size:0.85rem;
+  font-weight:700;color:var(--deep);letter-spacing:0.05em;
+  display:inline-flex;align-items:center;gap:0.5rem;
+}
+.marquee-star{color:var(--white);font-size:1rem;}
+
+/* ── SECTION SHARED ── */
+section{padding:5.5rem 3rem;}
+.sec-label{
+  font-size:0.7rem;font-weight:800;
+  letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--sky);margin-bottom:0.6rem;display:block;
+}
+.sec-title{
+  font-family:var(--serif);font-size:clamp(2rem,3.5vw,2.9rem);
+  font-weight:800;color:var(--deep);line-height:1.12;
+  letter-spacing:-0.5px;margin-bottom:1.1rem;
+}
+.sec-title .c-warm{color:var(--warm);}
+.sec-title .c-sky{color:var(--sky);}
+.sec-title .c-teal{color:var(--teal);}
+.sec-body{font-size:1rem;color:var(--muted);line-height:1.8;max-width:580px;font-weight:400;}
+
+/* ── ABOUT ── */
+.about{background:var(--white);}
+.about-inner{
+  display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;
+  max-width:1100px;margin:0 auto;
+}
+.about-text{}
+.about-visual{position:relative;}
+.about-blob{
+  background:linear-gradient(135deg, var(--sky-pale) 0%, var(--sky-light) 100%);
+  border-radius:30px 60px 30px 60px;
+  padding:2.5rem;
+  position:relative;overflow:hidden;
+}
+.about-blob::before{
+  content:'✦';position:absolute;top:1rem;right:1.5rem;
+  font-size:3rem;color:rgba(74,143,191,0.12);
+}
+.about-quote{
+  font-family:var(--serif);font-size:1.35rem;
+  font-weight:700;color:var(--sky-dark);line-height:1.45;
+  margin-bottom:1.5rem;
+}
+.about-origin{
+  font-size:0.875rem;color:var(--muted);line-height:1.75;
+}
+.about-badges{display:flex;flex-wrap:wrap;gap:0.6rem;margin-top:1.5rem;}
+.about-badge{
+  background:var(--sky-pale);
+  border:1px solid rgba(74,143,191,0.2);
+  border-radius:50px;padding:0.4rem 0.9rem;
+  font-size:0.75rem;font-weight:700;color:var(--sky-dark);
+}
+.about-pillars{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem;}
+.pillar{
+  background:var(--cream);border-radius:16px;
+  padding:1.25rem;border:1.5px solid var(--border);
+  transition:border-color 0.2s,transform 0.2s;
+}
+.pillar:hover{border-color:var(--sky);transform:translateY(-3px);}
+.p-icon{font-size:1.5rem;margin-bottom:0.5rem;display:block;}
+.p-title{font-size:0.875rem;font-weight:800;color:var(--deep);margin-bottom:0.25rem;}
+.p-text{font-size:0.78rem;color:var(--muted);line-height:1.55;}
+
+/* ── WHAT WE DO ── */
+.wwd{background:var(--sky-pale);}
+.wwd-head{text-align:center;max-width:600px;margin:0 auto 3rem;}
+.wwd-intro-text{
+  font-size:1rem;color:var(--muted);line-height:1.8;
+  max-width:780px;margin:1rem auto 0;text-align:center;
+}
+.wwd-cols{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;
+  max-width:1100px;margin:0 auto;
+}
+.wwd-card{
+  background:var(--white);border-radius:22px;padding:2rem;
+  border:1.5px solid var(--border);
+  transition:transform 0.25s,box-shadow 0.25s,border-color 0.25s;
+  position:relative;overflow:hidden;
+}
+.wwd-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(74,143,191,0.12);border-color:var(--sky);}
+.wwd-card-accent{
+  position:absolute;top:0;left:0;right:0;height:5px;border-radius:22px 22px 0 0;
+}
+.wc1 .wwd-card-accent{background:linear-gradient(90deg,var(--sky),var(--teal));}
+.wc2 .wwd-card-accent{background:linear-gradient(90deg,var(--warm),var(--coral));}
+.wc3 .wwd-card-accent{background:linear-gradient(90deg,var(--teal),var(--sky));}
+.wwd-icon{font-size:2.2rem;margin-bottom:1rem;display:block;}
+.wwd-title{font-family:var(--serif);font-size:1.1rem;font-weight:700;color:var(--deep);margin-bottom:0.6rem;}
+.wwd-text{font-size:0.85rem;color:var(--muted);line-height:1.65;}
+
+/* ── APP ── */
+.app-sec{
+  background:linear-gradient(150deg, #1A2B3C 0%, #2E5478 60%, #1A2B3C 100%);
+  position:relative;overflow:hidden;
+}
+.app-sec::before{
+  content:'';position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='30' r='1' fill='rgba(255,255,255,0.04)'/%3E%3C/svg%3E");
+  pointer-events:none;
+}
+.app-inner{
+  display:grid;grid-template-columns:1fr 1fr;gap:5rem;
+  align-items:center;max-width:1100px;margin:0 auto;
+  position:relative;
+}
+.app-sec .sec-label{color:var(--warm);}
+.app-sec .sec-title{color:var(--white);}
+.app-desc{font-size:1rem;color:rgba(255,255,255,0.65);line-height:1.8;margin-bottom:1.75rem;}
+.app-features{list-style:none;display:flex;flex-direction:column;gap:0.9rem;margin-bottom:2rem;}
+.app-features li{
+  display:flex;align-items:flex-start;gap:0.75rem;
+  font-size:0.9rem;color:rgba(255,255,255,0.8);
+}
+.afc{
+  width:24px;height:24px;border-radius:50%;
+  background:var(--teal);flex-shrink:0;margin-top:1px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:0.65rem;color:white;font-weight:800;
+}
+.app-tags{display:flex;gap:0.75rem;flex-wrap:wrap;}
+.app-tag{
+  background:rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.15);
+  border-radius:50px;padding:0.5rem 1.1rem;
+  font-size:0.78rem;font-weight:700;color:rgba(255,255,255,0.75);
+}
+
+/* PHONE MOCKUP */
+.phone-wrap{display:flex;justify-content:center;align-items:center;}
+.phone{
+  width:240px;
+  background:#0D0D0D;
+  border-radius:40px;
+  padding:10px;
+  border:2px solid rgba(255,255,255,0.1);
+  box-shadow:0 30px 80px rgba(0,0,0,0.5),inset 0 0 0 1px rgba(255,255,255,0.06);
+  position:relative;
+}
+.phone-notch{
+  width:70px;height:22px;background:#0D0D0D;
+  border-radius:0 0 14px 14px;
+  margin:0 auto 6px;position:relative;z-index:2;
+}
+.phone-screen{
+  background:#111;border-radius:32px;overflow:hidden;
+  height:460px;position:relative;
+}
+/* TikTok-style feed */
+.tk-video{
+  height:100%;display:flex;flex-direction:column;justify-content:flex-end;
+  position:relative;overflow:hidden;
+}
+.tk-bg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:4rem;}
+.tk-bg-1{background:linear-gradient(160deg,#1A3A4A 0%,#0D1F2D 100%);}
+.tk-bg-2{background:linear-gradient(160deg,#2A1A4A 0%,#1D0D2D 100%);}
+.tk-bg-3{background:linear-gradient(160deg,#1A4A2A 0%,#0D2D1A 100%);}
+.tk-slide{
+  position:absolute;inset:0;transition:transform 0.5s cubic-bezier(0.4,0,0.2,1);
+}
+.tk-slide:nth-child(1){transform:translateY(0%);}
+.tk-slide:nth-child(2){transform:translateY(100%);}
+.tk-slide:nth-child(3){transform:translateY(200%);}
+.tk-overlay{
+  position:absolute;bottom:0;left:0;right:0;
+  padding:1rem;
+  background:linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%);
+}
+.tk-user{font-size:0.58rem;font-weight:800;color:#fff;margin-bottom:0.2rem;}
+.tk-caption{font-size:0.5rem;color:rgba(255,255,255,0.8);line-height:1.4;margin-bottom:0.5rem;}
+.tk-tags{display:flex;gap:0.3rem;flex-wrap:wrap;}
+.tk-tag{font-size:0.45rem;color:var(--warm);font-weight:700;}
+.tk-sidebar{
+  position:absolute;right:0.5rem;bottom:3rem;
+  display:flex;flex-direction:column;align-items:center;gap:0.6rem;
+}
+.tk-btn{
+  display:flex;flex-direction:column;align-items:center;gap:1px;
+}
+.tk-btn-icon{font-size:1rem;}
+.tk-btn-label{font-size:0.38rem;color:rgba(255,255,255,0.7);font-weight:700;}
+.tk-nav{
+  position:absolute;bottom:0;left:0;right:0;
+  background:rgba(0,0,0,0.9);
+  display:flex;justify-content:space-around;
+  padding:0.4rem 0.25rem;border-top:1px solid rgba(255,255,255,0.08);
+}
+.tk-nav-item{
+  display:flex;flex-direction:column;align-items:center;gap:1px;
+  font-size:0.8rem;
+}
+.tk-nav-label{font-size:0.35rem;color:rgba(255,255,255,0.5);font-weight:700;}
+.tk-nav-item.active .tk-nav-label{color:var(--white);}
+.tk-header{
+  position:absolute;top:0;left:0;right:0;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:0.5rem 0.75rem;
+  background:linear-gradient(to bottom,rgba(0,0,0,0.5),transparent);
+  z-index:10;
+}
+.tk-logo-small{font-size:0.55rem;font-weight:800;color:white;letter-spacing:0.05em;}
+.tk-safe{
+  background:var(--teal);border-radius:50px;
+  padding:0.15rem 0.45rem;font-size:0.4rem;font-weight:800;color:white;
+}
+
+/* ── FOUNDERS ── */
+.founders{background:var(--white);}
+.founders-head{text-align:center;max-width:600px;margin:0 auto 3rem;}
+.founders-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;
+  max-width:1100px;margin:0 auto;
+}
+.f-card{
+  border-radius:22px;overflow:hidden;border:1.5px solid var(--border);
+  transition:transform 0.25s,box-shadow 0.25s;
+}
+.f-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(74,143,191,0.15);}
+.f-top{height:190px;position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding:1.25rem;}
+.fc1 .f-top{background:linear-gradient(140deg,#1A4A6E 0%,#2E6A96 60%,#4A8FBF 100%);}
+.fc2 .f-top{background:linear-gradient(140deg,#1A3D2E 0%,#2A6B4A 60%,#3DBFA6 100%);}
+.fc3 .f-top{background:linear-gradient(140deg,#4A2E1A 0%,#96602E 60%,#F5A623 100%);}
+.fc4 .f-top{background:linear-gradient(140deg,#2A1A3D 0%,#5A3A8A 60%,#9B72CF 100%);}
+.f-init{
+  width:56px;height:56px;border-radius:50%;
+  background:rgba(255,255,255,0.18);border:2px solid rgba(255,255,255,0.3);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--serif);font-size:1.1rem;font-weight:800;color:white;
+  position:absolute;top:1.25rem;left:1.25rem;
+}
+.f-role-tag{
+  background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.2);
+  border-radius:50px;padding:0.25rem 0.65rem;
+  font-size:0.6rem;font-weight:800;color:white;
+  letter-spacing:0.08em;text-transform:uppercase;
+  align-self:flex-start;
+}
+.f-bottom{background:var(--white);padding:1.1rem;}
+.f-name{font-family:var(--serif);font-size:1rem;font-weight:800;color:var(--deep);margin-bottom:0.15rem;}
+.f-title{font-size:0.7rem;font-weight:700;color:var(--sky);margin-bottom:0.5rem;text-transform:uppercase;letter-spacing:0.06em;}
+.f-bio{font-size:0.76rem;color:var(--muted);line-height:1.55;}
+
+/* ── CONTACT ── */
+.contact{background:var(--sky-pale);}
+.contact-inner{
+  display:grid;grid-template-columns:1fr 1.1fr;gap:5rem;
+  max-width:1100px;margin:0 auto;align-items:start;
+}
+.contact-info-block{margin-top:2.5rem;display:flex;flex-direction:column;gap:1rem;}
+.ci{
+  background:var(--white);border-radius:16px;
+  padding:1.1rem 1.4rem;border:1.5px solid var(--border);
+  display:flex;align-items:center;gap:1rem;
+  transition:border-color 0.2s,transform 0.2s;
+}
+.ci:hover{border-color:var(--sky);transform:translateX(4px);}
+.ci-icon-wrap{
+  width:44px;height:44px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;flex-shrink:0;
+}
+.ci-label{font-size:0.68rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em;}
+.ci-val{font-size:0.9rem;font-weight:700;color:var(--deep);margin-top:0.1rem;}
+.contact-form-wrap{
+  background:var(--white);border-radius:24px;
+  padding:2.25rem;border:1.5px solid var(--border);
+  box-shadow:0 8px 40px rgba(74,143,191,0.08);
+}
+.form-ttl{font-family:var(--serif);font-size:1.5rem;font-weight:800;color:var(--deep);margin-bottom:1.75rem;}
+.fg{margin-bottom:1.1rem;}
+.flbl{display:block;font-size:0.78rem;font-weight:800;color:var(--deep);margin-bottom:0.4rem;letter-spacing:0.02em;}
+.finp,.fsel,.ftxt{
+  width:100%;padding:0.72rem 1rem;
+  border-radius:12px;border:1.5px solid rgba(74,143,191,0.2);
+  font-family:var(--sans);font-size:0.9rem;color:var(--text);
+  background:var(--cream);outline:none;
+  transition:border-color 0.2s,background 0.2s;
+}
+.finp:focus,.fsel:focus,.ftxt:focus{border-color:var(--sky);background:var(--white);}
+.ftxt{min-height:110px;resize:vertical;}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.fsub{
+  width:100%;background:var(--sky);color:white;
+  border:none;cursor:pointer;
+  padding:0.9rem;border-radius:12px;
+  font-family:var(--sans);font-size:0.95rem;font-weight:800;
+  margin-top:0.5rem;
+  transition:background 0.2s,transform 0.2s,box-shadow 0.2s;
+  box-shadow:0 6px 18px rgba(74,143,191,0.3);
+}
+.fsub:hover{background:var(--sky-dark);transform:translateY(-2px);box-shadow:0 10px 24px rgba(74,143,191,0.4);}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--deep);padding:2.5rem 3rem;
+  display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:1rem;
+}
+.footer-logo img{height:44px;}
+.footer-links{display:flex;gap:1.5rem;list-style:none;}
+.footer-links a{font-size:0.8rem;font-weight:700;color:rgba(255,255,255,0.45);text-decoration:none;transition:color 0.2s;}
+.footer-links a:hover{color:var(--warm);}
+.footer-copy{font-size:0.72rem;color:rgba(255,255,255,0.25);}
+
+/* ── ANIMATIONS ── */
+.fade-up{opacity:0;transform:translateY(28px);transition:opacity 0.65s ease,transform 0.65s ease;}
+.fade-up.vis{opacity:1;transform:translateY(0);}
+.fade-up:nth-child(1){transition-delay:0s;}
+.fade-up:nth-child(2){transition-delay:0.1s;}
+.fade-up:nth-child(3){transition-delay:0.2s;}
+.fade-up:nth-child(4){transition-delay:0.3s;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  nav{padding:0.75rem 1.25rem;}
+  .nav-links{display:none;}
+  section{padding:3.5rem 1.25rem;}
+  .hero{grid-template-columns:1fr;padding:6.5rem 1.25rem 3rem;text-align:center;}
+  .hero-desc{margin:0 auto 2rem;}
+  .hero-btns{justify-content:center;}
+  .hero-visual{display:none;}
+  .about-inner{grid-template-columns:1fr;gap:2.5rem;}
+  .wwd-cols{grid-template-columns:1fr;}
+  .app-inner{grid-template-columns:1fr;gap:3rem;}
+  .founders-grid{grid-template-columns:1fr 1fr;}
+  .contact-inner{grid-template-columns:1fr;gap:2.5rem;}
+  footer{flex-direction:column;text-align:center;padding:2rem 1.25rem;}
+}
+@media(max-width:520px){
+  .founders-grid{grid-template-columns:1fr;}
+  .frow{grid-template-columns:1fr;}
+}
 </style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">Totspark Collective <span>.</span></div>
+  <div class="nav-logo"><img src="LOGO_SRC_PLACEHOLDER" alt="Totspark Collective"></div>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
-    <li><a href="#what-we-do">What We Do</a></li>
+    <li><a href="#wwd">What We Do</a></li>
     <li><a href="#app">Our App</a></li>
-    <li><a href="#founders">Founders</a></li>
-    <li><a href="#contact" class="nav-cta">Get In Touch</a></li>
+    <li><a href="#founders">Our Team</a></li>
+    <li><a href="#contact" class="nav-cta">Contact Us</a></li>
   </ul>
 </nav>
 
 <!-- HERO -->
 <section class="hero" id="home">
   <div class="hero-content">
-    <div class="hero-tag">Exclusive Kids Tech & Events</div>
+    <div class="hero-badge">✦ India's First Kids Entertainment Collective</div>
     <h1 class="hero-title">
-      Where Young<br>Minds <span class="highlight">Ignite</span><br>& Thrive
+      Creating<br><span class="magic">Magical</span><br><span class="magic2">Moments</span>
     </h1>
-    <p class="hero-subtitle">
-      Totspark Collective is a premium technology and event curation company crafting extraordinary experiences for children — blending innovation, education, and joy into every engagement.
+    <p class="hero-desc">
+      Totspark Collective curates extraordinary experiences for your little ones — live events, tech immersions, and a safe digital world built just for them.
     </p>
-    <div class="hero-buttons">
-      <a href="#what-we-do" class="btn-primary">Explore What We Do</a>
-      <a href="#contact" class="btn-secondary">Partner With Us</a>
+    <div class="hero-btns">
+      <a href="#wwd" class="btn-hero-p">Explore Our World</a>
+      <a href="#contact" class="btn-hero-s">Partner With Us</a>
     </div>
   </div>
-
   <div class="hero-visual">
-    <div class="hero-card-stack">
-      <div class="hcard hcard-stat hcard-stat-1">
-        <div class="hcard-icon" style="background:#FFF0EB;">🎯</div>
-        <div class="hcard-stat-num">500+</div>
-        <div class="hcard-stat-txt">Events Curated</div>
-      </div>
-      <div class="hcard hcard-main">
-        <div>
-          <div class="hcard-main-label">Young Minds Reached</div>
-          <div class="hcard-main-num">12K+</div>
-          <div class="hcard-main-sub">across 8 cities in India</div>
-        </div>
-        <div style="display:flex;gap:0.5rem;">
-          <div style="background:rgba(255,255,255,0.1);border-radius:8px;padding:0.5rem 0.75rem;font-size:0.7rem;color:rgba(255,255,255,0.7);">Tech Camps</div>
-          <div style="background:var(--accent);border-radius:8px;padding:0.5rem 0.75rem;font-size:0.7rem;color:#fff;">Live Events</div>
-        </div>
-      </div>
-      <div class="hcard hcard-stat hcard-stat-2">
-        <div class="hcard-icon" style="background:#E8F9F5;">✦</div>
-        <div class="hcard-stat-num">4.9★</div>
-        <div class="hcard-stat-txt">Parent Satisfaction</div>
-      </div>
+    <div class="hero-img-wrap">
+      <img src="HERO_IMG_PLACEHOLDER" alt="Totspark Events" onerror="this.style.display='none';this.parentElement.style.background='rgba(255,255,255,0.05)';this.parentElement.style.minHeight='300px';">
+      <div class="hero-float-badge hfb1"><div class="hfb-dot" style="background:#3DBFA6;"></div>12K+ Kids Engaged</div>
+      <div class="hero-float-badge hfb2"><div class="hfb-dot" style="background:#F5A623;"></div>500+ Events Done</div>
     </div>
   </div>
 </section>
 
-<!-- STATS BAR -->
-<div class="stats-bar">
-  <div class="stat-item">
-    <span class="stat-num">12K+</span>
-    <span class="stat-label">Children Engaged</span>
-  </div>
-  <div class="stat-divider"></div>
-  <div class="stat-item">
-    <span class="stat-num">500+</span>
-    <span class="stat-label">Events Organised</span>
-  </div>
-  <div class="stat-divider"></div>
-  <div class="stat-item">
-    <span class="stat-num">8</span>
-    <span class="stat-label">Cities Across India</span>
-  </div>
-  <div class="stat-divider"></div>
-  <div class="stat-item">
-    <span class="stat-num">200+</span>
-    <span class="stat-label">Brand Partners</span>
-  </div>
-  <div class="stat-divider"></div>
-  <div class="stat-item">
-    <span class="stat-num">4.9★</span>
-    <span class="stat-label">Average Rating</span>
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="marquee-item"><span class="marquee-star">✦</span> Baby &amp; Kids Convention</span>
+    <span class="marquee-item"><span class="marquee-star">✦</span> Live Entertainment</span>
+    <span class="marquee-item"><span class="marquee-star">✦</span> Interactive Experiences</span>
+    <span class="marquee-item"><span class="marquee-star">✦</span> Kids Tech Platform</span>
+    <span class="marquee-item"><span class="marquee-star">✦</span> Family Celebrations</span>
+    <span class="marquee-item"><span class="marquee-star">✦</span> Safe Digital Content</span>
+    <span class="marquee-item"><span class="marquee-star">✦</span> Creator Ecosystem</span>
+    <span class="marquee-item"><span class="marquee-star">✦</span> Kengeri, Bangalore</span>
+    <span class="marquee-item"><span class="marquee-star">✦</span> Baby &amp; Kids Convention</span>
+    <span class="marquee-item"><span class="marquee-star">✦</span> Live Entertainment</span>
+    <span class="marquee-item"><span class="marquee-star">✦</span> Interactive Experiences</span>
+    <span class="marquee-item"><span class="marquee-star">✦</span> Kids Tech Platform</span>
+    <span class="marquee-item"><span class="marquee-star">✦</span> Family Celebrations</span>
+    <span class="marquee-item"><span class="marquee-star">✦</span> Safe Digital Content</span>
+    <span class="marquee-item"><span class="marquee-star">✦</span> Creator Ecosystem</span>
+    <span class="marquee-item"><span class="marquee-star">✦</span> Kengeri, Bangalore</span>
   </div>
 </div>
 
 <!-- ABOUT -->
 <section class="about" id="about">
-  <div class="about-visual fade-in">
-    <div class="about-img-placeholder">
-      <div class="about-orb">
-        <div class="about-orb-inner">Tots<br>spark</div>
+  <div class="about-inner">
+    <div class="about-visual fade-up">
+      <div class="about-blob">
+        <div class="about-quote">"By the people who lived it — for the generation who's living it now."</div>
+        <p class="about-origin">
+          Totspark Collective was born at Comic Con, where four friends volunteering together saw something that India was missing — a dedicated, joyful space for families and their toddlers. India is built on experiences, and the love parents have for their tiny ones extends far beyond birthday cakes and weekend trips. We knew we had to build this.
+        </p>
+        <p class="about-origin" style="margin-top:1rem;">
+          What started as a shared dream turned into India's first entertainment platform built entirely for kids and families — where creators, artists, and performers bring joy to young audiences across every city, every home, every little screen.
+        </p>
+        <div class="about-badges">
+          <span class="about-badge">✦ Founded at Comic Con</span>
+          <span class="about-badge">📍 Bengaluru, Karnataka</span>
+          <span class="about-badge">🌟 Est. 2023</span>
+          <span class="about-badge">👶 Ages 0–16</span>
+        </div>
       </div>
-      <div class="about-badge ab1">Est. 2023</div>
-      <div class="about-badge ab2" style="background:var(--accent2);">India's First</div>
     </div>
-  </div>
-  <div class="fade-in">
-    <span class="section-tag">About Us</span>
-    <h2 class="section-title">A New Standard for Children's Experiences</h2>
-    <p class="section-body">
-      Totspark Collective was born from a simple belief — that every child deserves access to world-class experiences that nurture curiosity, creativity, and confidence. We are India's first exclusive kids tech and event management collective, built by parents, educators, and innovators who refused to settle for ordinary.
-    </p>
-    <p class="section-body" style="margin-top:1rem;">
-      We don't just plan events. We architect memories, build skills, and connect families to a curated ecosystem of premium experiences designed specifically for the young and the extraordinary.
-    </p>
-    <div class="about-pillars">
-      <div class="pillar">
-        <div class="pillar-icon" style="background:#FFF0EB;">🔬</div>
-        <div class="pillar-title">Innovation-Led</div>
-        <div class="pillar-text">Bringing cutting-edge tech to children's programming</div>
-      </div>
-      <div class="pillar">
-        <div class="pillar-icon" style="background:#E8F9F5;">🌱</div>
-        <div class="pillar-title">Impact-Driven</div>
-        <div class="pillar-text">Every experience is designed for real developmental growth</div>
-      </div>
-      <div class="pillar">
-        <div class="pillar-icon" style="background:#FFF9E6;">✦</div>
-        <div class="pillar-title">Curated Quality</div>
-        <div class="pillar-text">Only the finest speakers, venues, and experiences</div>
-      </div>
-      <div class="pillar">
-        <div class="pillar-icon" style="background:#F0EEFF;">🤝</div>
-        <div class="pillar-title">Community First</div>
-        <div class="pillar-text">Building a collective of inspired families</div>
+    <div class="fade-up">
+      <span class="sec-label">About Totspark Collective</span>
+      <h2 class="sec-title">People who <span class="c-warm">lived</span> the generations — building for the <span class="c-sky">generation new</span></h2>
+      <p class="sec-body">
+        We are creators, parents, and dreamers who have loved and lived experiences across public, family, and personal celebratory events. Now we come together to build Totspark — to bring those experiences to one and all.
+      </p>
+      <p class="sec-body" style="margin-top:1rem;">
+        We want to give families a place where they can make memories for the long run with toddlers as they grow up to be young adults. We know how precious that time is — every laugh, giggle, first word spelled, every doodle and Boogie Woogie move matters.
+      </p>
+      <div class="about-pillars">
+        <div class="pillar">
+          <span class="p-icon">🎭</span>
+          <div class="p-title">Creative Curation</div>
+          <div class="p-text">Every event uniquely designed to reflect your child's personality and your family's vision</div>
+        </div>
+        <div class="pillar">
+          <span class="p-icon">💝</span>
+          <div class="p-title">Attention to Detail</div>
+          <div class="p-text">From concept to execution, we handle every aspect with meticulous care and love</div>
+        </div>
+        <div class="pillar">
+          <span class="p-icon">✨</span>
+          <div class="p-title">Exclusive Experience</div>
+          <div class="p-text">Intimate, personalised celebrations your family will cherish forever</div>
+        </div>
+        <div class="pillar">
+          <span class="p-icon">🌍</span>
+          <div class="p-title">Community Driven</div>
+          <div class="p-text">A collective built on shared joy — families, creators, and storytellers united</div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- WHAT WE DO -->
-<section class="what-we-do" id="what-we-do">
-  <div class="fade-in" style="text-align:center; max-width:640px; margin:0 auto 1rem;">
-    <span class="section-tag">What We Do</span>
-    <h2 class="section-title">Six Ways We Spark Potential</h2>
-    <p class="section-body" style="margin:0 auto;">From intimate workshops to large-scale festivals, we deliver premium experiences that parents trust and children love.</p>
+<section class="wwd" id="wwd">
+  <div class="wwd-head fade-up">
+    <span class="sec-label">What We Do</span>
+    <h2 class="sec-title">Building India's First <span class="c-sky">Baby &amp; Kids</span> <span class="c-warm">Convention</span></h2>
   </div>
-  <div class="wwd-grid fade-in">
-    <div class="wwd-card">
-      <div class="wwd-num">01</div>
+  <p class="wwd-intro-text fade-up">
+    To build an ecosystem that cares for Indian families and their loving toddlers. A playful, immersive world where creators, families, and brands come together to celebrate the magic of growing up. Every laugh, every first word, every doodle — captured and made into a bigger-than-life feeling.
+  </p>
+  <br><br>
+  <div class="wwd-cols">
+    <div class="wwd-card wc1 fade-up">
+      <div class="wwd-card-accent"></div>
       <span class="wwd-icon">🎪</span>
-      <div class="wwd-title">Exclusive Event Curation</div>
-      <div class="wwd-text">End-to-end curation of premium children's events — from concept to execution. We handle thematic design, vendor selection, and flawless delivery.</div>
+      <div class="wwd-title">Creative Curation &amp; Event Management</div>
+      <div class="wwd-text">End-to-end event management for kids' conventions, festivals, and family celebrations. We design the concept, execute the vision, and deliver experiences that families talk about for years.</div>
     </div>
-    <div class="wwd-card">
-      <div class="wwd-num">02</div>
-      <span class="wwd-icon">🤖</span>
-      <div class="wwd-title">Kids Tech Experiences</div>
-      <div class="wwd-text">Hands-on robotics camps, AI workshops, coding bootcamps, and STEM festivals tailored for children aged 4–16, made accessible and thrilling.</div>
-    </div>
-    <div class="wwd-card">
-      <div class="wwd-num">03</div>
-      <span class="wwd-icon">🏆</span>
-      <div class="wwd-title">Corporate Kids Days</div>
-      <div class="wwd-text">Crafting memorable family engagement programs for corporate houses — structured, branded, and crafted to reflect your organisation's values.</div>
-    </div>
-    <div class="wwd-card">
-      <div class="wwd-num">04</div>
-      <span class="wwd-icon">🎓</span>
-      <div class="wwd-title">School & Institution Tie-Ups</div>
-      <div class="wwd-text">Partnering with schools to deliver curriculum-adjacent experiences that enrich classroom learning with real-world exposure and inspiration.</div>
-    </div>
-    <div class="wwd-card">
-      <div class="wwd-num">05</div>
+    <div class="wwd-card wc2 fade-up">
+      <div class="wwd-card-accent"></div>
       <span class="wwd-icon">🌟</span>
-      <div class="wwd-title">Signature Festivals</div>
-      <div class="wwd-text">Large-format annual festivals that celebrate childhood — with performances, competitions, exhibitions, and community. Events families look forward to all year.</div>
+      <div class="wwd-title">Live Shows &amp; Performances</div>
+      <div class="wwd-text">Bringing creators, artists, and performers who bring joy to young audiences — live shows, tours, and interactive performances that celebrate creativity and childhood in every city.</div>
     </div>
-    <div class="wwd-card">
-      <div class="wwd-num">06</div>
-      <span class="wwd-icon">📲</span>
-      <div class="wwd-title">Digital Platform & App</div>
-      <div class="wwd-text">Our proprietary app lets families discover, book, and track curated events. One destination for every Totspark experience, wherever you are.</div>
+    <div class="wwd-card wc3 fade-up">
+      <div class="wwd-card-accent"></div>
+      <span class="wwd-icon">🤝</span>
+      <div class="wwd-title">Brand &amp; Community Partnerships</div>
+      <div class="wwd-text">Connecting family-forward brands with our engaged community of parents and kids. Authentic partnerships that add value — not noise — to family experiences.</div>
     </div>
   </div>
 </section>
 
 <!-- APP -->
-<section class="app-section" id="app">
-  <div class="fade-in">
-    <span class="section-tag">Our Product</span>
-    <h2 class="section-title">The Totspark App — Discovery Reimagined</h2>
-    <p class="section-body">
-      Our platform is built for the modern family — a curated discovery engine that surfaces only the best experiences, with seamless booking and personalised recommendations for every child.
-    </p>
-    <ul class="app-features">
-      <li>
-        <div class="app-check">✓</div>
-        <span><strong style="color:#fff;">Smart Discovery</strong> — AI-powered recommendations based on your child's age, interests, and learning goals</span>
-      </li>
-      <li>
-        <div class="app-check">✓</div>
-        <span><strong style="color:#fff;">One-Tap Booking</strong> — Reserve spots at events with real-time availability and instant confirmation</span>
-      </li>
-      <li>
-        <div class="app-check">✓</div>
-        <span><strong style="color:#fff;">Progress Journals</strong> — Track your child's milestones and memories from every experience</span>
-      </li>
-      <li>
-        <div class="app-check">✓</div>
-        <span><strong style="color:#fff;">Exclusive Member Access</strong> — Priority booking and early-bird offers for Totspark members</span>
-      </li>
-      <li>
-        <div class="app-check">✓</div>
-        <span><strong style="color:#fff;">Safety Verified</strong> — Every event partner is rigorously vetted for safety and quality standards</span>
-      </li>
-    </ul>
-    <div class="app-badges">
-      <div class="app-badge">📱 iOS & Android</div>
-      <div class="app-badge">🌐 Web Platform</div>
-      <div class="app-badge">🔔 Launching 2025</div>
+<section class="app-sec" id="app">
+  <div class="app-inner">
+    <div class="fade-up">
+      <span class="sec-label">Our Product</span>
+      <h2 class="sec-title">TikTok for Kids — <span style="color:var(--teal);">But Safe.</span><br>But Magical.</h2>
+      <p class="app-desc">
+        We are building a short-form video platform exclusively for children — the first of its kind in India. Think TikTok, but every single piece of content is handpicked, age-verified, and hyper-moderated to ensure nothing inappropriate ever reaches your child's screen.
+      </p>
+      <ul class="app-features">
+        <li><div class="afc">✓</div><span><strong style="color:#fff;">100% Kids-Only Content</strong> — every video reviewed and approved by our content safety team before going live</span></li>
+        <li><div class="afc">✓</div><span><strong style="color:#fff;">AI + Human Moderation</strong> — a two-layer moderation system that catches what algorithms miss</span></li>
+        <li><div class="afc">✓</div><span><strong style="color:#fff;">Curated Creators</strong> — only verified, background-checked educators and performers create for our platform</span></li>
+        <li><div class="afc">✓</div><span><strong style="color:#fff;">No Ads, No Distractions</strong> — a completely clean, distraction-free environment for curious minds</span></li>
+        <li><div class="afc">✓</div><span><strong style="color:#fff;">Parent Dashboard</strong> — full visibility and controls so parents stay in the loop, always</span></li>
+      </ul>
+      <div class="app-tags">
+        <div class="app-tag">📱 iOS &amp; Android</div>
+        <div class="app-tag">🛡️ Ultra-Safe</div>
+        <div class="app-tag">🚀 Coming 2025</div>
+      </div>
     </div>
-  </div>
-
-  <div class="fade-in app-mockup">
-    <div class="phone-frame">
-      <div class="phone-screen">
-        <div class="ps-header">
-          <div class="ps-header-label">Good Morning, Priya ✦</div>
-          <div class="ps-header-title">3 events near you</div>
-        </div>
-        <div class="ps-event">
-          <div class="ps-event-dot" style="background:#E8633A;"></div>
-          <div>
-            <div class="ps-event-name">Robotics Bootcamp</div>
-            <div class="ps-event-date">Sat, May 10 · Koramangala</div>
+    <div class="phone-wrap fade-up">
+      <div class="phone">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <div class="tk-slide" id="slide1">
+            <div class="tk-video">
+              <div class="tk-bg tk-bg-1">🦕</div>
+              <div class="tk-overlay">
+                <div class="tk-user">@DinoDiscoveries</div>
+                <div class="tk-caption">Did you know T-Rex had tiny arms because they were super strong grippers? 🦖</div>
+                <div class="tk-tags">
+                  <span class="tk-tag">#KidsLearn</span>
+                  <span class="tk-tag">#Dinosaurs</span>
+                  <span class="tk-tag">#Fun</span>
+                </div>
+              </div>
+              <div class="tk-sidebar">
+                <div class="tk-btn"><span class="tk-btn-icon">❤️</span><span class="tk-btn-label">12.4K</span></div>
+                <div class="tk-btn"><span class="tk-btn-icon">💬</span><span class="tk-btn-label">348</span></div>
+                <div class="tk-btn"><span class="tk-btn-icon">⭐</span><span class="tk-btn-label">Save</span></div>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="ps-event">
-          <div class="ps-event-dot" style="background:#4BBFA6;"></div>
-          <div>
-            <div class="ps-event-name">AI Art Workshop</div>
-            <div class="ps-event-date">Sun, May 11 · Indiranagar</div>
+          <div class="tk-header">
+            <span class="tk-logo-small">TOTSPARK</span>
+            <span class="tk-safe">🛡️ SAFE</span>
           </div>
-        </div>
-        <div class="ps-event">
-          <div class="ps-event-dot" style="background:#F5C842;"></div>
-          <div>
-            <div class="ps-event-name">Totspark Science Fest</div>
-            <div class="ps-event-date">May 17–18 · Palace Grounds</div>
-          </div>
-        </div>
-        <div class="ps-bottom">
-          <div class="ps-mini-card">
-            <div class="ps-mini-num">12</div>
-            <div class="ps-mini-txt">Events attended</div>
-          </div>
-          <div class="ps-mini-card" style="background:var(--accent);">
-            <div class="ps-mini-num">Gold</div>
-            <div class="ps-mini-txt">Member tier</div>
+          <div class="tk-nav">
+            <div class="tk-nav-item active"><span>🏠</span><span class="tk-nav-label">Home</span></div>
+            <div class="tk-nav-item"><span>🔍</span><span class="tk-nav-label">Explore</span></div>
+            <div class="tk-nav-item"><span>➕</span><span class="tk-nav-label">Create</span></div>
+            <div class="tk-nav-item"><span>👾</span><span class="tk-nav-label">Learn</span></div>
+            <div class="tk-nav-item"><span>👤</span><span class="tk-nav-label">Profile</span></div>
           </div>
         </div>
       </div>
@@ -1065,60 +685,54 @@
 
 <!-- FOUNDERS -->
 <section class="founders" id="founders">
-  <div class="founders-intro fade-in">
-    <div>
-      <span class="section-tag">The Team</span>
-      <h2 class="section-title">Built by Visionaries,<br>Driven by Purpose</h2>
-    </div>
-    <p style="max-width:360px;color:var(--muted);font-size:0.95rem;line-height:1.7;">Four founders with complementary expertise, united by a shared conviction that children deserve extraordinary.</p>
+  <div class="founders-head fade-up">
+    <span class="sec-label">Meet Our Founders</span>
+    <h2 class="sec-title">Four Friends. One <span class="c-warm">Shared Dream.</span></h2>
+    <p style="font-size:1rem;color:var(--muted);line-height:1.75;margin-top:0.75rem;">Who better to build this than three brothers who at one point have seen and been part of each other's lives growing up — and a creative visionary who's part of a toddler's upbringing journey.</p>
   </div>
-
-  <div class="founders-grid fade-in">
-    <div class="founder-card fc1">
-      <div class="founder-avatar">
-        <div class="founder-initials">AR</div>
-        <div class="founder-tag">Co-Founder & CEO</div>
+  <div class="founders-grid">
+    <div class="f-card fc1 fade-up">
+      <div class="f-top">
+        <div class="f-init">KS</div>
+        <div class="f-role-tag">Co-Founder &amp; CEO</div>
       </div>
-      <div class="founder-info">
-        <div class="founder-name">Kuldeep D Salian </div>
-        <div class="founder-role">Chief Executive Officer</div>
-        <div class="founder-bio">Former product lead at a Bengaluru ed-tech unicorn, Arjun brings 10+ years of scaling consumer platforms. He architects Totspark's vision and growth strategy.</div>
-      </div>
-    </div>
-
-    <div class="founder-card fc2">
-      <div class="founder-avatar">
-        <div class="founder-initials">SM</div>
-        <div class="founder-tag">Co-Founder & COO</div>
-      </div>
-      <div class="founder-info">
-        <div class="founder-name">Havish Sreenath </div>
-        <div class="founder-role">Chief Operations Officer</div>
-        <div class="founder-bio">With a background in luxury event management and a decade producing large-scale children's festivals, Sneha ensures every Totspark experience is flawless.</div>
+      <div class="f-bottom">
+        <div class="f-name">Kuldeep D Salian</div>
+        <div class="f-title">Chief Executive Officer</div>
+        <div class="f-bio">Co-Founder and CEO with strong operational expertise and hands-on leadership. A former founding member at Infoscion, he played a key role in building and scaling its early operations. With deep experience in event management — managing teams and large-scale events, including tournaments in football and cricket — Kuldeep brings impressive process-building skills to Totspark, leading strategy, event execution, and ensuring inspiring ideas are delivered effectively.</div>
       </div>
     </div>
-
-    <div class="founder-card fc3">
-      <div class="founder-avatar">
-        <div class="founder-initials">VK</div>
-        <div class="founder-tag">Co-Founder </div>
+    <div class="f-card fc2 fade-up">
+      <div class="f-top">
+        <div class="f-init">HS</div>
+        <div class="f-role-tag">Co-Founder</div>
       </div>
-      <div class="founder-info">
-        <div class="founder-name">Tanmay D Salian </div>
-        <div class="founder-role">Chief Technology Officer</div>
-        <div class="founder-bio">Full-stack engineer and former IIT Madras researcher, Vikram leads the development of the Totspark platform — building the tech infrastructure that powers the collective.</div>
+      <div class="f-bottom">
+        <div class="f-name">Havish Sreenath</div>
+        <div class="f-title">Co-Founder</div>
+        <div class="f-bio">An engineer, serial entrepreneur, and CEO of Infiscion Labs. He brings expertise across sales, business development, and large-scale event execution. A business storyteller, theatre artist, and mentor, he has played a big role in guiding the founding team. With over a decade of experience at Comic Con, he focuses on building events and community-driven experiences at Totspark — mentoring talent and creating impactful, story-driven experiences through a people-first approach.</div>
       </div>
     </div>
-
-    <div class="founder-card fc4">
-      <div class="founder-avatar">
-        <div class="founder-initials">PD</div>
-        <div class="founder-tag">Co-Founder & CMO</div>
+    <div class="f-card fc3 fade-up">
+      <div class="f-top">
+        <div class="f-init">SK</div>
+        <div class="f-role-tag">Co-Founder</div>
       </div>
-      <div class="founder-info">
-        <div class="founder-name">Sanat Kumar </div>
-        <div class="founder-role">Chief Marketing Officer</div>
-        <div class="founder-bio">Brand strategist and community builder, Priya shaped consumer brands before turning her focus to building India's most loved kids-first community at Totspark.</div>
+      <div class="f-bottom">
+        <div class="f-name">Sanat Kumar</div>
+        <div class="f-title">Co-Founder</div>
+        <div class="f-bio">Co-Founder with experience in live entertainment, gaming, and event execution. With a B.Sc. in Biotechnology and Genetics, he transitioned into sales, business development, and interactive entertainment formats. A Co-founder with Blueprints, he has worked on titles like PUBG, Pokémon Unite, Valorant and more — and contributed to Comic Con India for 8 years in roles ranging from team leader to on-stage host, audience engagement, and sales-driven growth. At Totspark, he focuses on partnerships and creating engaging, people-centric experiences.</div>
+      </div>
+    </div>
+    <div class="f-card fc4 fade-up">
+      <div class="f-top">
+        <div class="f-init">TS</div>
+        <div class="f-role-tag">Co-Founder</div>
+      </div>
+      <div class="f-bottom">
+        <div class="f-name">Tanmay D Salian</div>
+        <div class="f-title">Co-Founder</div>
+        <div class="f-bio">The youngest Co-Founder, bringing a fresh, new-generational perspective shaped by mentorship from his co-founders. With a background in Business Analytics and working knowledge of UI/UX design, he blends analytical thinking with creativity. Having supported Totspark's core operations, he has led and supervised major events like Comic Con and GTA Tokyo. A former startup founding member, he has early entrepreneurial experience and contributes innovative ideas and creative problem-solving across initiatives.</div>
       </div>
     </div>
   </div>
@@ -1126,104 +740,115 @@
 
 <!-- CONTACT -->
 <section class="contact" id="contact">
-  <div class="fade-in">
-    <span class="section-tag">Contact Us</span>
-    <h2 class="section-title">Let's Build Something Extraordinary Together</h2>
-    <p class="section-body">Whether you're a parent, a brand, a school, or an investor — we'd love to connect. Reach out and a member of our team will respond within 24 hours.</p>
-
-    <div class="contact-info-cards">
-      <div class="ci-card">
-        <div class="ci-icon" style="background:#FFF0EB;">📍</div>
-        <div>
-          <div class="ci-label">Headquarters</div>
-          <div class="ci-value">Indiranagar, Bengaluru, Karnataka 560038</div>
+  <div class="contact-inner">
+    <div class="fade-up">
+      <span class="sec-label">Contact Us</span>
+      <h2 class="sec-title">Let's <span class="c-warm">Connect</span> &amp; Create Together</h2>
+      <p class="sec-body">Whether you're a parent, a brand, a school, or an investor — we'd love to hear from you. Reach out and our team will get back within 24 hours.</p>
+      <div class="contact-info-block">
+        <div class="ci">
+          <div class="ci-icon-wrap" style="background:#EBF5FB;">📧</div>
+          <div><div class="ci-label">Email</div><div class="ci-val">totsparkcollective@gmail.com</div></div>
         </div>
-      </div>
-      <div class="ci-card">
-        <div class="ci-icon" style="background:#E8F9F5;">✉️</div>
-        <div>
-          <div class="ci-label">Email Us</div>
-          <div class="ci-value">hello@totssparkcollective.in</div>
+        <div class="ci">
+          <div class="ci-icon-wrap" style="background:#FDF8EC;">📞</div>
+          <div><div class="ci-label">Phone</div><div class="ci-val">8050569662</div></div>
         </div>
-      </div>
-      <div class="ci-card">
-        <div class="ci-icon" style="background:#FFF9E6;">📞</div>
-        <div>
-          <div class="ci-label">Call Us</div>
-          <div class="ci-value">+91 98765 43210</div>
+        <div class="ci">
+          <div class="ci-icon-wrap" style="background:#EBF9F5;">📍</div>
+          <div><div class="ci-label">Address</div><div class="ci-val">Kengeri, Bangalore 560060</div></div>
         </div>
       </div>
     </div>
-  </div>
-
-  <div class="contact-form fade-in">
-    <div class="form-title">Send Us a Message</div>
-    <div class="form-row">
-      <div class="form-group">
-        <label class="form-label">First Name</label>
-        <input class="form-input" type="text" placeholder="Riya" />
+    <div class="contact-form-wrap fade-up">
+      <div class="form-ttl">Send Us a Message</div>
+      <div class="frow">
+        <div class="fg"><label class="flbl">First Name</label><input class="finp" type="text" placeholder="Your name"></div>
+        <div class="fg"><label class="flbl">Last Name</label><input class="finp" type="text" placeholder="Last name"></div>
       </div>
-      <div class="form-group">
-        <label class="form-label">Last Name</label>
-        <input class="form-input" type="text" placeholder="Sharma" />
+      <div class="fg"><label class="flbl">Email Address</label><input class="finp" type="email" placeholder="you@example.com"></div>
+      <div class="fg"><label class="flbl">Phone Number</label><input class="finp" type="tel" placeholder="+91 98765 43210"></div>
+      <div class="fg">
+        <label class="flbl">I'm reaching out as a...</label>
+        <select class="fsel">
+          <option>Parent / Guardian</option>
+          <option>School / Institution</option>
+          <option>Corporate / Brand Partner</option>
+          <option>Investor</option>
+          <option>Media / Press</option>
+          <option>App Creator / Performer</option>
+          <option>Other</option>
+        </select>
       </div>
+      <div class="fg"><label class="flbl">Message</label><textarea class="ftxt" placeholder="Tell us what you have in mind..."></textarea></div>
+      <button class="fsub" id="fsub-btn">Send Message →</button>
     </div>
-    <div class="form-group">
-      <label class="form-label">Email Address</label>
-      <input class="form-input" type="email" placeholder="riya@example.com" />
-    </div>
-    <div class="form-group">
-      <label class="form-label">I'm reaching out as a...</label>
-      <select class="form-select">
-        <option>Parent / Guardian</option>
-        <option>School / Institution</option>
-        <option>Corporate / Brand</option>
-        <option>Investor</option>
-        <option>Media / Press</option>
-        <option>Other</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label class="form-label">Message</label>
-      <textarea class="form-textarea" placeholder="Tell us a little about what you're looking for..."></textarea>
-    </div>
-    <button class="form-submit">Send Message →</button>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo">Totspark<span>.</span> Collective</div>
+  <div class="footer-logo"><img src="LOGO_SRC_PLACEHOLDER" alt="Totspark Collective"></div>
   <ul class="footer-links">
     <li><a href="#about">About</a></li>
-    <li><a href="#what-we-do">Services</a></li>
-    <li><a href="#app">App</a></li>
-    <li><a href="#founders">Team</a></li>
+    <li><a href="#wwd">What We Do</a></li>
+    <li><a href="#app">Our App</a></li>
+    <li><a href="#founders">Our Team</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <div class="footer-copy">© 2025 Totspark Collective Pvt. Ltd. All rights reserved.</div>
+  <div class="footer-copy">© 2025 Totspark Collective. All rights reserved. · Bengaluru, India</div>
 </footer>
 
 <script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        observer.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.12 });
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('vis'); obs.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
 
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+document.getElementById('fsub-btn').addEventListener('click', function() {
+  this.textContent = '✓ Message Sent!';
+  this.style.background = '#3DBFA6';
+  setTimeout(() => { this.textContent = 'Send Message →'; this.style.background = ''; }, 3000);
+});
 
-  document.querySelector('.form-submit').addEventListener('click', function() {
-    this.textContent = 'Message Sent ✓';
-    this.style.background = '#4BBFA6';
-    setTimeout(() => {
-      this.textContent = 'Send Message →';
-      this.style.background = '';
-    }, 3000);
-  });
+// Animate phone feed slides
+const slides = [
+  { emoji: '🦕', color: 'linear-gradient(160deg,#1A3A4A 0%,#0D1F2D 100%)', user: '@DinoDiscoveries', caption: 'Did you know T-Rex had tiny arms because they were super strong? 🦖', tags: ['#KidsLearn','#Dinosaurs'] },
+  { emoji: '🎨', color: 'linear-gradient(160deg,#3A1A4A 0%,#2D0D3A 100%)', user: '@TinyArtists', caption: 'Three easy ways to draw a rainbow with your fingers! 🌈', tags: ['#ArtForKids','#Create'] },
+  { emoji: '🚀', color: 'linear-gradient(160deg,#1A3A2A 0%,#0D2D1A 100%)', user: '@SpaceKids', caption: 'The moon is actually moving away from Earth 3.8cm every year! 🌙', tags: ['#Space','#Science'] },
+];
+let cur = 0;
+function updateSlide() {
+  const s = slides[cur];
+  const screen = document.querySelector('.phone-screen');
+  const slide = screen.querySelector('.tk-slide');
+  const bg = slide.querySelector('.tk-bg');
+  const user = slide.querySelector('.tk-user');
+  const cap = slide.querySelector('.tk-caption');
+  const tags = slide.querySelector('.tk-tags');
+  slide.style.opacity = '0';
+  slide.style.transform = 'translateY(30px)';
+  setTimeout(() => {
+    bg.style.background = s.color;
+    bg.textContent = s.emoji;
+    user.textContent = s.user;
+    cap.textContent = s.caption;
+    tags.innerHTML = s.tags.map(t => `<span class="tk-tag">${t}</span>`).join('');
+    slide.style.transition = 'opacity 0.4s,transform 0.4s';
+    slide.style.opacity = '1';
+    slide.style.transform = 'translateY(0)';
+  }, 300);
+  cur = (cur + 1) % slides.length;
+}
+setInterval(updateSlide, 2800);
 </script>
 </body>
-</html>
+</html>"""
+
+html = html.replace("LOGO_SRC_PLACEHOLDER", logo_src)
+
+with open('/mnt/user-data/outputs/totspark-collective-v2.html', 'w') as f:
+    f.write(html)
+
+print("Done!", len(html), "chars")
+PYEOF
