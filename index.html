@@ -1,854 +1,1213 @@
-html = """<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Totspark Collective — Creating Magical Moments</title>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,700;0,900;1,300;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
 <style>
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
-:root{
-  --sky:#4A8FBF;
-  --sky-dark:#2E6A96;
-  --sky-light:#D6EAF8;
-  --sky-pale:#EBF5FB;
-  --warm:#F5A623;
-  --warm-light:#FDF3DC;
-  --coral:#E8603A;
-  --teal:#3DBFA6;
-  --cream:#FAFAF7;
-  --deep:#1A2B3C;
-  --text:#2C3E50;
-  --muted:#6B7C8D;
-  --white:#FFFFFF;
-  --border:rgba(74,143,191,0.15);
-  --serif:'Syne',sans-serif;
-  --sans:'Nunito',sans-serif;
-}
-html{scroll-behavior:smooth;}
-body{font-family:var(--sans);background:var(--cream);color:var(--text);overflow-x:hidden;line-height:1.6;}
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* ── NAV ── */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:200;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:0.75rem 3rem;
-  background:rgba(255,255,255,0.95);
-  backdrop-filter:blur(16px);
-  border-bottom:1px solid var(--border);
-  box-shadow:0 2px 20px rgba(74,143,191,0.08);
-}
-.nav-logo img{height:52px;display:block;}
-.nav-links{display:flex;gap:2.5rem;list-style:none;align-items:center;}
-.nav-links a{font-size:0.9rem;font-weight:700;color:var(--deep);text-decoration:none;letter-spacing:0.02em;transition:color 0.2s;}
-.nav-links a:hover{color:var(--sky);}
-.nav-cta{
-  background:var(--sky);color:var(--white) !important;
-  padding:0.55rem 1.4rem;border-radius:50px;
-  font-weight:800 !important;font-size:0.85rem !important;
-  transition:background 0.2s,transform 0.2s !important;
-  box-shadow:0 4px 14px rgba(74,143,191,0.35);
-}
-.nav-cta:hover{background:var(--sky-dark) !important;transform:translateY(-1px);}
+  :root {
+    --sun: #FFD95A;
+    --grass: #3DBB7A;
+    --sky: #4AABDA;
+    --berry: #E8507A;
+    --cream: #FFF8EE;
+    --ink: #1A1A2E;
+    --muted: #6B6B8A;
+    --white: #FFFFFF;
+    --radius: 20px;
+  }
 
-/* ── HERO ── */
-.hero{
-  min-height:100vh;
-  background:linear-gradient(160deg, var(--sky) 0%, var(--sky-dark) 45%, #1A2B3C 100%);
-  display:grid;grid-template-columns:1fr 1fr;
-  align-items:center;
-  padding:7rem 3rem 4rem;
-  gap:3rem;
-  position:relative;
-  overflow:hidden;
-}
-.hero::before{
-  content:'';position:absolute;inset:0;
-  background:url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Ccircle cx='40' cy='40' r='1.5' fill='rgba(255,255,255,0.06)'/%3E%3C/g%3E%3C/svg%3E");
-  pointer-events:none;
-}
-.hero-badge{
-  display:inline-flex;align-items:center;gap:0.5rem;
-  background:rgba(255,255,255,0.15);
-  border:1px solid rgba(255,255,255,0.25);
-  border-radius:50px;padding:0.4rem 1rem;
-  font-size:0.72rem;font-weight:800;
-  letter-spacing:0.1em;text-transform:uppercase;
-  color:var(--warm);margin-bottom:1.5rem;
-}
-.hero-title{
-  font-family:var(--serif);font-size:clamp(2.8rem,4.5vw,4.5rem);
-  font-weight:800;line-height:1.05;color:var(--white);
-  margin-bottom:1.25rem;letter-spacing:-1px;
-}
-.hero-title .magic{color:var(--warm);font-style:italic;}
-.hero-title .magic2{color:#7FDBCA;}
-.hero-desc{
-  font-size:1.05rem;color:rgba(255,255,255,0.78);
-  max-width:480px;line-height:1.75;margin-bottom:2.25rem;font-weight:400;
-}
-.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
-.btn-hero-p{
-  background:var(--warm);color:var(--deep);
-  padding:0.85rem 2rem;border-radius:50px;
-  font-weight:800;font-size:0.9rem;text-decoration:none;
-  transition:transform 0.2s,box-shadow 0.2s;display:inline-block;
-  box-shadow:0 6px 20px rgba(245,166,35,0.4);
-}
-.btn-hero-p:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(245,166,35,0.5);}
-.btn-hero-s{
-  background:rgba(255,255,255,0.1);color:var(--white);
-  border:1.5px solid rgba(255,255,255,0.35);
-  padding:0.85rem 2rem;border-radius:50px;
-  font-weight:700;font-size:0.9rem;text-decoration:none;
-  transition:background 0.2s;display:inline-block;
-}
-.btn-hero-s:hover{background:rgba(255,255,255,0.18);}
-.hero-visual{position:relative;display:flex;align-items:center;justify-content:center;}
-.hero-img-wrap{
-  background:rgba(255,255,255,0.1);
-  border:1px solid rgba(255,255,255,0.2);
-  border-radius:28px;padding:1.5rem;
-  position:relative;
-}
-.hero-img-wrap img{width:100%;max-width:420px;border-radius:18px;display:block;}
-.hero-float-badge{
-  position:absolute;
-  background:var(--white);border-radius:16px;
-  padding:0.75rem 1.1rem;
-  box-shadow:0 8px 24px rgba(0,0,0,0.15);
-  font-weight:800;font-size:0.78rem;color:var(--deep);
-  display:flex;align-items:center;gap:0.5rem;
-}
-.hfb1{top:-16px;left:-20px;animation:fbob 3s ease-in-out infinite;}
-.hfb2{bottom:-16px;right:-20px;animation:fbob 3s ease-in-out infinite 1s;}
-@keyframes fbob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-.hfb-dot{width:10px;height:10px;border-radius:50%;}
+  html { scroll-behavior: smooth; }
 
-/* ── MARQUEE ── */
-.marquee-wrap{
-  background:var(--warm);overflow:hidden;
-  padding:0.85rem 0;white-space:nowrap;
-}
-.marquee-track{
-  display:inline-flex;gap:3rem;
-  animation:marquee 18s linear infinite;
-}
-@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.marquee-item{
-  font-family:var(--serif);font-size:0.85rem;
-  font-weight:700;color:var(--deep);letter-spacing:0.05em;
-  display:inline-flex;align-items:center;gap:0.5rem;
-}
-.marquee-star{color:var(--white);font-size:1rem;}
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
 
-/* ── SECTION SHARED ── */
-section{padding:5.5rem 3rem;}
-.sec-label{
-  font-size:0.7rem;font-weight:800;
-  letter-spacing:0.18em;text-transform:uppercase;
-  color:var(--sky);margin-bottom:0.6rem;display:block;
-}
-.sec-title{
-  font-family:var(--serif);font-size:clamp(2rem,3.5vw,2.9rem);
-  font-weight:800;color:var(--deep);line-height:1.12;
-  letter-spacing:-0.5px;margin-bottom:1.1rem;
-}
-.sec-title .c-warm{color:var(--warm);}
-.sec-title .c-sky{color:var(--sky);}
-.sec-title .c-teal{color:var(--teal);}
-.sec-body{font-size:1rem;color:var(--muted);line-height:1.8;max-width:580px;font-weight:400;}
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1rem 3rem;
+    background: rgba(255,248,238,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1.5px solid rgba(26,26,46,0.08);
+  }
 
-/* ── ABOUT ── */
-.about{background:var(--white);}
-.about-inner{
-  display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;
-  max-width:1100px;margin:0 auto;
-}
-.about-text{}
-.about-visual{position:relative;}
-.about-blob{
-  background:linear-gradient(135deg, var(--sky-pale) 0%, var(--sky-light) 100%);
-  border-radius:30px 60px 30px 60px;
-  padding:2.5rem;
-  position:relative;overflow:hidden;
-}
-.about-blob::before{
-  content:'✦';position:absolute;top:1rem;right:1.5rem;
-  font-size:3rem;color:rgba(74,143,191,0.12);
-}
-.about-quote{
-  font-family:var(--serif);font-size:1.35rem;
-  font-weight:700;color:var(--sky-dark);line-height:1.45;
-  margin-bottom:1.5rem;
-}
-.about-origin{
-  font-size:0.875rem;color:var(--muted);line-height:1.75;
-}
-.about-badges{display:flex;flex-wrap:wrap;gap:0.6rem;margin-top:1.5rem;}
-.about-badge{
-  background:var(--sky-pale);
-  border:1px solid rgba(74,143,191,0.2);
-  border-radius:50px;padding:0.4rem 0.9rem;
-  font-size:0.75rem;font-weight:700;color:var(--sky-dark);
-}
-.about-pillars{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem;}
-.pillar{
-  background:var(--cream);border-radius:16px;
-  padding:1.25rem;border:1.5px solid var(--border);
-  transition:border-color 0.2s,transform 0.2s;
-}
-.pillar:hover{border-color:var(--sky);transform:translateY(-3px);}
-.p-icon{font-size:1.5rem;margin-bottom:0.5rem;display:block;}
-.p-title{font-size:0.875rem;font-weight:800;color:var(--deep);margin-bottom:0.25rem;}
-.p-text{font-size:0.78rem;color:var(--muted);line-height:1.55;}
+  .logo {
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-size: 1.4rem;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+  }
+  .logo span { color: var(--grass); }
 
-/* ── WHAT WE DO ── */
-.wwd{background:var(--sky-pale);}
-.wwd-head{text-align:center;max-width:600px;margin:0 auto 3rem;}
-.wwd-intro-text{
-  font-size:1rem;color:var(--muted);line-height:1.8;
-  max-width:780px;margin:1rem auto 0;text-align:center;
-}
-.wwd-cols{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;
-  max-width:1100px;margin:0 auto;
-}
-.wwd-card{
-  background:var(--white);border-radius:22px;padding:2rem;
-  border:1.5px solid var(--border);
-  transition:transform 0.25s,box-shadow 0.25s,border-color 0.25s;
-  position:relative;overflow:hidden;
-}
-.wwd-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(74,143,191,0.12);border-color:var(--sky);}
-.wwd-card-accent{
-  position:absolute;top:0;left:0;right:0;height:5px;border-radius:22px 22px 0 0;
-}
-.wc1 .wwd-card-accent{background:linear-gradient(90deg,var(--sky),var(--teal));}
-.wc2 .wwd-card-accent{background:linear-gradient(90deg,var(--warm),var(--coral));}
-.wc3 .wwd-card-accent{background:linear-gradient(90deg,var(--teal),var(--sky));}
-.wwd-icon{font-size:2.2rem;margin-bottom:1rem;display:block;}
-.wwd-title{font-family:var(--serif);font-size:1.1rem;font-weight:700;color:var(--deep);margin-bottom:0.6rem;}
-.wwd-text{font-size:0.85rem;color:var(--muted);line-height:1.65;}
+  nav ul { list-style: none; display: flex; gap: 2rem; align-items: center; }
+  nav ul a {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--ink);
+    text-decoration: none;
+    opacity: 0.75;
+    transition: opacity 0.2s;
+  }
+  nav ul a:hover { opacity: 1; }
 
-/* ── APP ── */
-.app-sec{
-  background:linear-gradient(150deg, #1A2B3C 0%, #2E5478 60%, #1A2B3C 100%);
-  position:relative;overflow:hidden;
-}
-.app-sec::before{
-  content:'';position:absolute;inset:0;
-  background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='30' r='1' fill='rgba(255,255,255,0.04)'/%3E%3C/svg%3E");
-  pointer-events:none;
-}
-.app-inner{
-  display:grid;grid-template-columns:1fr 1fr;gap:5rem;
-  align-items:center;max-width:1100px;margin:0 auto;
-  position:relative;
-}
-.app-sec .sec-label{color:var(--warm);}
-.app-sec .sec-title{color:var(--white);}
-.app-desc{font-size:1rem;color:rgba(255,255,255,0.65);line-height:1.8;margin-bottom:1.75rem;}
-.app-features{list-style:none;display:flex;flex-direction:column;gap:0.9rem;margin-bottom:2rem;}
-.app-features li{
-  display:flex;align-items:flex-start;gap:0.75rem;
-  font-size:0.9rem;color:rgba(255,255,255,0.8);
-}
-.afc{
-  width:24px;height:24px;border-radius:50%;
-  background:var(--teal);flex-shrink:0;margin-top:1px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:0.65rem;color:white;font-weight:800;
-}
-.app-tags{display:flex;gap:0.75rem;flex-wrap:wrap;}
-.app-tag{
-  background:rgba(255,255,255,0.08);
-  border:1px solid rgba(255,255,255,0.15);
-  border-radius:50px;padding:0.5rem 1.1rem;
-  font-size:0.78rem;font-weight:700;color:rgba(255,255,255,0.75);
-}
+  .nav-cta {
+    background: var(--ink) !important;
+    color: var(--cream) !important;
+    opacity: 1 !important;
+    padding: 0.5rem 1.25rem;
+    border-radius: 50px;
+    font-weight: 500 !important;
+    transition: transform 0.2s, background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--berry) !important; transform: translateY(-1px); }
 
-/* PHONE MOCKUP */
-.phone-wrap{display:flex;justify-content:center;align-items:center;}
-.phone{
-  width:240px;
-  background:#0D0D0D;
-  border-radius:40px;
-  padding:10px;
-  border:2px solid rgba(255,255,255,0.1);
-  box-shadow:0 30px 80px rgba(0,0,0,0.5),inset 0 0 0 1px rgba(255,255,255,0.06);
-  position:relative;
-}
-.phone-notch{
-  width:70px;height:22px;background:#0D0D0D;
-  border-radius:0 0 14px 14px;
-  margin:0 auto 6px;position:relative;z-index:2;
-}
-.phone-screen{
-  background:#111;border-radius:32px;overflow:hidden;
-  height:460px;position:relative;
-}
-/* TikTok-style feed */
-.tk-video{
-  height:100%;display:flex;flex-direction:column;justify-content:flex-end;
-  position:relative;overflow:hidden;
-}
-.tk-bg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:4rem;}
-.tk-bg-1{background:linear-gradient(160deg,#1A3A4A 0%,#0D1F2D 100%);}
-.tk-bg-2{background:linear-gradient(160deg,#2A1A4A 0%,#1D0D2D 100%);}
-.tk-bg-3{background:linear-gradient(160deg,#1A4A2A 0%,#0D2D1A 100%);}
-.tk-slide{
-  position:absolute;inset:0;transition:transform 0.5s cubic-bezier(0.4,0,0.2,1);
-}
-.tk-slide:nth-child(1){transform:translateY(0%);}
-.tk-slide:nth-child(2){transform:translateY(100%);}
-.tk-slide:nth-child(3){transform:translateY(200%);}
-.tk-overlay{
-  position:absolute;bottom:0;left:0;right:0;
-  padding:1rem;
-  background:linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%);
-}
-.tk-user{font-size:0.58rem;font-weight:800;color:#fff;margin-bottom:0.2rem;}
-.tk-caption{font-size:0.5rem;color:rgba(255,255,255,0.8);line-height:1.4;margin-bottom:0.5rem;}
-.tk-tags{display:flex;gap:0.3rem;flex-wrap:wrap;}
-.tk-tag{font-size:0.45rem;color:var(--warm);font-weight:700;}
-.tk-sidebar{
-  position:absolute;right:0.5rem;bottom:3rem;
-  display:flex;flex-direction:column;align-items:center;gap:0.6rem;
-}
-.tk-btn{
-  display:flex;flex-direction:column;align-items:center;gap:1px;
-}
-.tk-btn-icon{font-size:1rem;}
-.tk-btn-label{font-size:0.38rem;color:rgba(255,255,255,0.7);font-weight:700;}
-.tk-nav{
-  position:absolute;bottom:0;left:0;right:0;
-  background:rgba(0,0,0,0.9);
-  display:flex;justify-content:space-around;
-  padding:0.4rem 0.25rem;border-top:1px solid rgba(255,255,255,0.08);
-}
-.tk-nav-item{
-  display:flex;flex-direction:column;align-items:center;gap:1px;
-  font-size:0.8rem;
-}
-.tk-nav-label{font-size:0.35rem;color:rgba(255,255,255,0.5);font-weight:700;}
-.tk-nav-item.active .tk-nav-label{color:var(--white);}
-.tk-header{
-  position:absolute;top:0;left:0;right:0;
-  display:flex;justify-content:space-between;align-items:center;
-  padding:0.5rem 0.75rem;
-  background:linear-gradient(to bottom,rgba(0,0,0,0.5),transparent);
-  z-index:10;
-}
-.tk-logo-small{font-size:0.55rem;font-weight:800;color:white;letter-spacing:0.05em;}
-.tk-safe{
-  background:var(--teal);border-radius:50px;
-  padding:0.15rem 0.45rem;font-size:0.4rem;font-weight:800;color:white;
-}
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 7rem 3rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
 
-/* ── FOUNDERS ── */
-.founders{background:var(--white);}
-.founders-head{text-align:center;max-width:600px;margin:0 auto 3rem;}
-.founders-grid{
-  display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;
-  max-width:1100px;margin:0 auto;
-}
-.f-card{
-  border-radius:22px;overflow:hidden;border:1.5px solid var(--border);
-  transition:transform 0.25s,box-shadow 0.25s;
-}
-.f-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(74,143,191,0.15);}
-.f-top{height:190px;position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding:1.25rem;}
-.fc1 .f-top{background:linear-gradient(140deg,#1A4A6E 0%,#2E6A96 60%,#4A8FBF 100%);}
-.fc2 .f-top{background:linear-gradient(140deg,#1A3D2E 0%,#2A6B4A 60%,#3DBFA6 100%);}
-.fc3 .f-top{background:linear-gradient(140deg,#4A2E1A 0%,#96602E 60%,#F5A623 100%);}
-.fc4 .f-top{background:linear-gradient(140deg,#2A1A3D 0%,#5A3A8A 60%,#9B72CF 100%);}
-.f-init{
-  width:56px;height:56px;border-radius:50%;
-  background:rgba(255,255,255,0.18);border:2px solid rgba(255,255,255,0.3);
-  display:flex;align-items:center;justify-content:center;
-  font-family:var(--serif);font-size:1.1rem;font-weight:800;color:white;
-  position:absolute;top:1.25rem;left:1.25rem;
-}
-.f-role-tag{
-  background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.2);
-  border-radius:50px;padding:0.25rem 0.65rem;
-  font-size:0.6rem;font-weight:800;color:white;
-  letter-spacing:0.08em;text-transform:uppercase;
-  align-self:flex-start;
-}
-.f-bottom{background:var(--white);padding:1.1rem;}
-.f-name{font-family:var(--serif);font-size:1rem;font-weight:800;color:var(--deep);margin-bottom:0.15rem;}
-.f-title{font-size:0.7rem;font-weight:700;color:var(--sky);margin-bottom:0.5rem;text-transform:uppercase;letter-spacing:0.06em;}
-.f-bio{font-size:0.76rem;color:var(--muted);line-height:1.55;}
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 70% 60% at 70% 50%, rgba(61,187,122,0.12) 0%, transparent 70%),
+                radial-gradient(ellipse 50% 50% at 20% 80%, rgba(74,171,218,0.1) 0%, transparent 60%);
+  }
 
-/* ── CONTACT ── */
-.contact{background:var(--sky-pale);}
-.contact-inner{
-  display:grid;grid-template-columns:1fr 1.1fr;gap:5rem;
-  max-width:1100px;margin:0 auto;align-items:start;
-}
-.contact-info-block{margin-top:2.5rem;display:flex;flex-direction:column;gap:1rem;}
-.ci{
-  background:var(--white);border-radius:16px;
-  padding:1.1rem 1.4rem;border:1.5px solid var(--border);
-  display:flex;align-items:center;gap:1rem;
-  transition:border-color 0.2s,transform 0.2s;
-}
-.ci:hover{border-color:var(--sky);transform:translateX(4px);}
-.ci-icon-wrap{
-  width:44px;height:44px;border-radius:12px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:1.1rem;flex-shrink:0;
-}
-.ci-label{font-size:0.68rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em;}
-.ci-val{font-size:0.9rem;font-weight:700;color:var(--deep);margin-top:0.1rem;}
-.contact-form-wrap{
-  background:var(--white);border-radius:24px;
-  padding:2.25rem;border:1.5px solid var(--border);
-  box-shadow:0 8px 40px rgba(74,143,191,0.08);
-}
-.form-ttl{font-family:var(--serif);font-size:1.5rem;font-weight:800;color:var(--deep);margin-bottom:1.75rem;}
-.fg{margin-bottom:1.1rem;}
-.flbl{display:block;font-size:0.78rem;font-weight:800;color:var(--deep);margin-bottom:0.4rem;letter-spacing:0.02em;}
-.finp,.fsel,.ftxt{
-  width:100%;padding:0.72rem 1rem;
-  border-radius:12px;border:1.5px solid rgba(74,143,191,0.2);
-  font-family:var(--sans);font-size:0.9rem;color:var(--text);
-  background:var(--cream);outline:none;
-  transition:border-color 0.2s,background 0.2s;
-}
-.finp:focus,.fsel:focus,.ftxt:focus{border-color:var(--sky);background:var(--white);}
-.ftxt{min-height:110px;resize:vertical;}
-.frow{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
-.fsub{
-  width:100%;background:var(--sky);color:white;
-  border:none;cursor:pointer;
-  padding:0.9rem;border-radius:12px;
-  font-family:var(--sans);font-size:0.95rem;font-weight:800;
-  margin-top:0.5rem;
-  transition:background 0.2s,transform 0.2s,box-shadow 0.2s;
-  box-shadow:0 6px 18px rgba(74,143,191,0.3);
-}
-.fsub:hover{background:var(--sky-dark);transform:translateY(-2px);box-shadow:0 10px 24px rgba(74,143,191,0.4);}
+  .hero-blobs {
+    position: absolute; right: -60px; top: 50%;
+    transform: translateY(-50%);
+    width: 560px; height: 560px;
+  }
 
-/* ── FOOTER ── */
-footer{
-  background:var(--deep);padding:2.5rem 3rem;
-  display:flex;justify-content:space-between;align-items:center;
-  flex-wrap:wrap;gap:1rem;
-}
-.footer-logo img{height:44px;}
-.footer-links{display:flex;gap:1.5rem;list-style:none;}
-.footer-links a{font-size:0.8rem;font-weight:700;color:rgba(255,255,255,0.45);text-decoration:none;transition:color 0.2s;}
-.footer-links a:hover{color:var(--warm);}
-.footer-copy{font-size:0.72rem;color:rgba(255,255,255,0.25);}
+  .blob {
+    position: absolute; border-radius: 60% 40% 55% 45% / 50% 60% 40% 50%;
+    animation: morph 8s ease-in-out infinite;
+  }
+  .blob-1 { inset: 0; background: var(--sun); opacity: 0.18; }
+  .blob-2 { inset: 40px; background: var(--grass); opacity: 0.15; animation-delay: -3s; border-radius: 45% 55% 40% 60% / 60% 40% 55% 45%; }
+  .blob-3 { inset: 80px; background: var(--sky); opacity: 0.12; animation-delay: -5s; border-radius: 50% 50% 60% 40% / 40% 55% 45% 60%; }
 
-/* ── ANIMATIONS ── */
-.fade-up{opacity:0;transform:translateY(28px);transition:opacity 0.65s ease,transform 0.65s ease;}
-.fade-up.vis{opacity:1;transform:translateY(0);}
-.fade-up:nth-child(1){transition-delay:0s;}
-.fade-up:nth-child(2){transition-delay:0.1s;}
-.fade-up:nth-child(3){transition-delay:0.2s;}
-.fade-up:nth-child(4){transition-delay:0.3s;}
+  @keyframes morph {
+    0%, 100% { border-radius: 60% 40% 55% 45% / 50% 60% 40% 50%; }
+    33% { border-radius: 40% 60% 45% 55% / 60% 40% 50% 50%; }
+    66% { border-radius: 55% 45% 60% 40% / 45% 55% 40% 60%; }
+  }
 
-/* ── RESPONSIVE ── */
-@media(max-width:900px){
-  nav{padding:0.75rem 1.25rem;}
-  .nav-links{display:none;}
-  section{padding:3.5rem 1.25rem;}
-  .hero{grid-template-columns:1fr;padding:6.5rem 1.25rem 3rem;text-align:center;}
-  .hero-desc{margin:0 auto 2rem;}
-  .hero-btns{justify-content:center;}
-  .hero-visual{display:none;}
-  .about-inner{grid-template-columns:1fr;gap:2.5rem;}
-  .wwd-cols{grid-template-columns:1fr;}
-  .app-inner{grid-template-columns:1fr;gap:3rem;}
-  .founders-grid{grid-template-columns:1fr 1fr;}
-  .contact-inner{grid-template-columns:1fr;gap:2.5rem;}
-  footer{flex-direction:column;text-align:center;padding:2rem 1.25rem;}
-}
-@media(max-width:520px){
-  .founders-grid{grid-template-columns:1fr;}
-  .frow{grid-template-columns:1fr;}
-}
+  /* floating shapes in hero */
+  .float-shape {
+    position: absolute;
+    border-radius: 50%;
+    animation: float 6s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(10deg); }
+  }
+
+  .hero-content { position: relative; z-index: 2; max-width: 600px; }
+
+  .hero-tag {
+    display: inline-block;
+    background: var(--grass);
+    color: var(--white);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.4rem 1rem;
+    border-radius: 50px;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight: 900;
+    line-height: 1.0;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--berry);
+  }
+
+  .hero p {
+    font-size: 1.15rem;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+    max-width: 480px;
+    font-weight: 300;
+  }
+
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+  .btn-primary {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 0.9rem 2rem;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: inline-flex; align-items: center; gap: 0.5rem;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(26,26,46,0.2); }
+
+  .btn-outline {
+    border: 2px solid var(--ink);
+    color: var(--ink);
+    padding: 0.9rem 2rem;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+  }
+  .btn-outline:hover { background: var(--ink); color: var(--cream); }
+
+  .hero-stats {
+    display: flex; gap: 2.5rem; margin-top: 3rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid rgba(26,26,46,0.1);
+  }
+  .stat-num {
+    font-family: 'Fraunces', serif;
+    font-size: 2rem;
+    font-weight: 900;
+    line-height: 1;
+    color: var(--ink);
+  }
+  .stat-label { font-size: 0.8rem; color: var(--muted); margin-top: 0.25rem; }
+
+  /* SECTION COMMON */
+  section { padding: 6rem 3rem; }
+
+  .section-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--grass);
+    margin-bottom: 0.75rem;
+  }
+
+  h2.section-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    margin-bottom: 1rem;
+  }
+
+  .lead {
+    font-size: 1.1rem;
+    color: var(--muted);
+    line-height: 1.7;
+    font-weight: 300;
+    max-width: 540px;
+  }
+
+  /* ABOUT */
+  .about { background: var(--white); }
+
+  .about-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .about-visual {
+    position: relative;
+    height: 480px;
+  }
+
+  .about-card {
+    position: absolute;
+    border-radius: 24px;
+    padding: 2rem;
+    font-weight: 500;
+  }
+
+  .about-card-main {
+    background: var(--ink);
+    color: var(--cream);
+    top: 0; left: 0; right: 60px; bottom: 60px;
+    display: flex; flex-direction: column; justify-content: flex-end;
+  }
+  .about-card-main .big-text {
+    font-family: 'Fraunces', serif;
+    font-size: 4.5rem;
+    font-weight: 900;
+    line-height: 1;
+    color: var(--sun);
+  }
+  .about-card-main p { font-size: 0.95rem; margin-top: 0.5rem; opacity: 0.8; font-weight: 300; }
+
+  .about-card-accent {
+    background: var(--berry);
+    color: var(--white);
+    bottom: 0; right: 0;
+    width: 200px; height: 200px;
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center;
+    text-align: center;
+  }
+  .about-card-accent .num {
+    font-family: 'Fraunces', serif;
+    font-size: 3rem;
+    font-weight: 900;
+    line-height: 1;
+  }
+  .about-card-accent p { font-size: 0.8rem; opacity: 0.9; margin-top: 0.25rem; font-weight: 300; }
+
+  .about-text .lead { margin-bottom: 1.5rem; }
+
+  .value-list { list-style: none; margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem; }
+  .value-list li {
+    display: flex; gap: 1rem; align-items: flex-start;
+    font-size: 0.95rem; line-height: 1.5;
+  }
+  .value-dot {
+    width: 32px; height: 32px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.85rem; flex-shrink: 0; margin-top: 0.1rem;
+  }
+
+  /* WHAT WE DO */
+  .services { background: var(--cream); }
+
+  .services-inner { max-width: 1100px; margin: 0 auto; }
+  .services-header { margin-bottom: 4rem; }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .service-card {
+    background: var(--white);
+    border-radius: 24px;
+    padding: 2.5rem;
+    border: 1.5px solid rgba(26,26,46,0.06);
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .service-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    background: var(--accent, var(--grass));
+    border-radius: 24px 24px 0 0;
+  }
+  .service-card:hover { transform: translateY(-6px); box-shadow: 0 20px 48px rgba(26,26,46,0.1); }
+
+  .service-icon {
+    width: 56px; height: 56px; border-radius: 16px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.6rem; margin-bottom: 1.5rem;
+    background: var(--icon-bg, #E8F8F0);
+  }
+
+  .service-card h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+  }
+  .service-card p { font-size: 0.95rem; color: var(--muted); line-height: 1.7; font-weight: 300; }
+
+  /* PRODUCT PAGE — APP */
+  .product-hero {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 7rem 3rem 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .product-hero-bg {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 80% at 80% 50%, rgba(255,217,90,0.08) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 60% at 10% 30%, rgba(61,187,122,0.06) 0%, transparent 60%);
+  }
+
+  .product-hero-inner {
+    position: relative; z-index: 2;
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 4rem; align-items: center;
+  }
+
+  .product-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(255,217,90,0.15);
+    border: 1px solid rgba(255,217,90,0.3);
+    color: var(--sun);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.4rem 1rem;
+    border-radius: 50px;
+    margin-bottom: 1.5rem;
+  }
+
+  .product-hero h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 1.0;
+    margin-bottom: 1.5rem;
+  }
+  .product-hero h1 span { color: var(--sun); font-style: italic; font-weight: 300; }
+
+  .product-hero p {
+    font-size: 1.05rem;
+    color: rgba(255,248,238,0.7);
+    line-height: 1.7;
+    font-weight: 300;
+    margin-bottom: 2rem;
+  }
+
+  .product-hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+  .btn-sun {
+    background: var(--sun);
+    color: var(--ink);
+    padding: 0.9rem 2rem;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: transform 0.2s;
+  }
+  .btn-sun:hover { transform: translateY(-2px); }
+
+  .btn-ghost {
+    border: 1.5px solid rgba(255,248,238,0.25);
+    color: var(--cream);
+    padding: 0.9rem 2rem;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .btn-ghost:hover { background: rgba(255,248,238,0.08); }
+
+  /* Phone mockup */
+  .phone-wrap {
+    display: flex; justify-content: center; align-items: center;
+    position: relative;
+  }
+  .phone {
+    width: 260px; height: 520px;
+    background: #0D0D1A;
+    border-radius: 40px;
+    border: 8px solid rgba(255,255,255,0.12);
+    position: relative;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.05);
+    overflow: hidden;
+  }
+  .phone-notch {
+    position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+    width: 100px; height: 28px; background: #0D0D1A;
+    border-radius: 0 0 20px 20px; z-index: 10;
+  }
+  .phone-screen {
+    position: absolute; inset: 0;
+    background: linear-gradient(160deg, #1a1a2e 0%, #16213E 100%);
+    display: flex; flex-direction: column;
+    overflow: hidden;
+  }
+  .phone-status {
+    padding: 32px 16px 8px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 0.65rem; color: rgba(255,248,238,0.6);
+  }
+  .phone-feed { flex: 1; display: flex; flex-direction: column; gap: 8px; padding: 8px; overflow: hidden; }
+
+  .feed-card {
+    border-radius: 16px;
+    padding: 12px;
+    flex-shrink: 0;
+  }
+  .feed-card-title { font-size: 0.7rem; font-weight: 500; margin-bottom: 4px; }
+  .feed-card-sub { font-size: 0.6rem; opacity: 0.7; font-weight: 300; }
+  .verified-badge {
+    display: inline-block; font-size: 0.55rem;
+    background: rgba(61,187,122,0.2); color: #3DBB7A;
+    padding: 2px 6px; border-radius: 20px; margin-top: 4px;
+  }
+
+  .phone-nav {
+    display: flex; justify-content: space-around; padding: 10px;
+    border-top: 0.5px solid rgba(255,255,255,0.08);
+  }
+  .phone-nav-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: rgba(255,248,238,0.3);
+  }
+  .phone-nav-dot.active { background: var(--sun); }
+
+  /* Floating labels around phone */
+  .phone-label {
+    position: absolute;
+    background: var(--white);
+    color: var(--ink);
+    padding: 0.6rem 1rem;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    white-space: nowrap;
+  }
+  .phone-label span { font-size: 0.85rem; }
+
+  /* FEATURES */
+  .features {
+    background: var(--cream);
+    padding: 6rem 3rem;
+  }
+  .features-inner { max-width: 1100px; margin: 0 auto; }
+  .features-header { text-align: center; margin-bottom: 4rem; }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .feature-item {
+    display: flex; gap: 1.5rem;
+    padding: 2rem;
+    background: var(--white);
+    border-radius: 20px;
+    border: 1.5px solid rgba(26,26,46,0.06);
+    transition: border-color 0.2s;
+  }
+  .feature-item:hover { border-color: var(--grass); }
+
+  .feature-icon-wrap {
+    width: 48px; height: 48px; border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem; flex-shrink: 0;
+  }
+
+  .feature-item h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  .feature-item p { font-size: 0.9rem; color: var(--muted); line-height: 1.6; font-weight: 300; }
+
+  /* SAFETY SECTION */
+  .safety {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 6rem 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .safety-bg {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 50% 70% at 90% 50%, rgba(61,187,122,0.07) 0%, transparent 65%);
+  }
+  .safety-inner {
+    position: relative; z-index: 2;
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 5rem; align-items: center;
+  }
+  .safety h2 { color: var(--cream); }
+  .safety .lead { color: rgba(255,248,238,0.65); }
+
+  .safety-pillars { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 1.25rem; }
+  .pillar {
+    display: flex; gap: 1rem; align-items: center;
+    padding: 1rem 1.25rem;
+    background: rgba(255,248,238,0.05);
+    border: 1px solid rgba(255,248,238,0.1);
+    border-radius: 16px;
+  }
+  .pillar-icon {
+    font-size: 1.5rem;
+    width: 44px; height: 44px;
+    border-radius: 12px;
+    background: rgba(255,248,238,0.08);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .pillar h4 { font-size: 0.95rem; font-weight: 500; color: var(--cream); }
+  .pillar p { font-size: 0.82rem; color: rgba(255,248,238,0.5); margin-top: 0.2rem; font-weight: 300; }
+
+  .safety-stats {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+  }
+  .safety-stat-card {
+    background: rgba(255,248,238,0.06);
+    border: 1px solid rgba(255,248,238,0.1);
+    border-radius: 20px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+  }
+  .safety-stat-num {
+    font-family: 'Fraunces', serif;
+    font-size: 2.8rem;
+    font-weight: 900;
+    color: var(--sun);
+    line-height: 1;
+  }
+  .safety-stat-label {
+    font-size: 0.8rem;
+    color: rgba(255,248,238,0.5);
+    margin-top: 0.5rem;
+    font-weight: 300;
+  }
+
+  /* FOUNDERS */
+  .founders { background: var(--white); }
+  .founders-inner { max-width: 1100px; margin: 0 auto; }
+  .founders-header { margin-bottom: 3rem; }
+
+  .founders-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .founder-card {
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1.5px solid rgba(26,26,46,0.08);
+    transition: transform 0.3s;
+  }
+  .founder-card:hover { transform: translateY(-4px); }
+
+  .founder-avatar {
+    height: 180px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Fraunces', serif;
+    font-size: 3.5rem;
+    font-weight: 900;
+  }
+
+  .founder-info { padding: 1.5rem; }
+  .founder-info h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+  }
+  .founder-info .role { font-size: 0.78rem; color: var(--muted); margin-bottom: 0.75rem; font-weight: 400; }
+  .founder-info p { font-size: 0.82rem; color: var(--muted); line-height: 1.6; font-weight: 300; }
+
+  /* CONTACT */
+  .contact { background: var(--cream); }
+  .contact-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 5rem; align-items: start;
+  }
+
+  .contact-details { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2rem; }
+  .contact-item {
+    display: flex; gap: 1rem; align-items: center;
+    padding: 1.25rem 1.5rem;
+    background: var(--white);
+    border-radius: 16px;
+    border: 1.5px solid rgba(26,26,46,0.06);
+  }
+  .contact-item-icon {
+    font-size: 1.2rem;
+    width: 42px; height: 42px; border-radius: 12px;
+    background: #E8F8F0;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .contact-item-label { font-size: 0.75rem; color: var(--muted); margin-bottom: 0.2rem; }
+  .contact-item-value { font-size: 0.95rem; font-weight: 500; }
+
+  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+  .form-group label { font-size: 0.82rem; font-weight: 500; color: var(--muted); }
+  .form-group input, .form-group textarea {
+    padding: 0.85rem 1rem;
+    border: 1.5px solid rgba(26,26,46,0.12);
+    border-radius: 12px;
+    background: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.2s;
+    resize: vertical;
+  }
+  .form-group input:focus, .form-group textarea:focus { border-color: var(--grass); }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 3rem;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  footer .logo { color: var(--cream); }
+  footer .logo span { color: var(--sun); }
+  footer p { font-size: 0.85rem; color: rgba(255,248,238,0.4); font-weight: 300; }
+
+  /* PAGE NAVIGATION */
+  .page { display: none; }
+  .page.active { display: block; }
+
+  /* Animations */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate { animation: fadeUp 0.7s ease both; }
+  .delay-1 { animation-delay: 0.1s; }
+  .delay-2 { animation-delay: 0.2s; }
+  .delay-3 { animation-delay: 0.3s; }
+  .delay-4 { animation-delay: 0.4s; }
+
+  /* Mobile hamburger */
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 0; }
+  .hamburger span { width: 24px; height: 2px; background: var(--ink); border-radius: 2px; transition: all 0.3s; }
+
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    nav ul { display: none; }
+    .hamburger { display: flex; }
+    section, .product-hero { padding: 4rem 1.5rem; }
+    .hero { padding: 6rem 1.5rem 3rem; }
+    .about-inner, .product-hero-inner, .safety-inner, .contact-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .services-grid, .features-grid { grid-template-columns: 1fr; }
+    .founders-grid { grid-template-columns: repeat(2, 1fr); }
+    .hero-blobs { width: 300px; height: 300px; right: -100px; top: 20%; }
+    .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
+    .about-visual { height: 300px; }
+  }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
-  <div class="nav-logo"><img src="LOGO_SRC_PLACEHOLDER" alt="Totspark Collective"></div>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#wwd">What We Do</a></li>
-    <li><a href="#app">Our App</a></li>
-    <li><a href="#founders">Our Team</a></li>
-    <li><a href="#contact" class="nav-cta">Contact Us</a></li>
+  <a href="#" class="logo" onclick="showPage('home')">Tots<span>park</span></a>
+  <ul>
+    <li><a href="#about" onclick="showPage('home')">About</a></li>
+    <li><a href="#services" onclick="showPage('home')">What We Do</a></li>
+    <li><a href="#" onclick="showPage('home'); document.getElementById('founders-section').scrollIntoView({behavior:'smooth'})">Our Team</a></li>
+    <li><a href="#" onclick="showPage('app')" style="color: var(--grass); opacity: 1 !important;">✦ Our App</a></li>
+    <li><a href="#contact" class="nav-cta" onclick="showPage('home')">Get in Touch</a></li>
   </ul>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
-<!-- HERO -->
-<section class="hero" id="home">
-  <div class="hero-content">
-    <div class="hero-badge">✦ India's First Kids Entertainment Collective</div>
-    <h1 class="hero-title">
-      Creating<br><span class="magic">Magical</span><br><span class="magic2">Moments</span>
-    </h1>
-    <p class="hero-desc">
-      Totspark Collective curates extraordinary experiences for your little ones — live events, tech immersions, and a safe digital world built just for them.
-    </p>
-    <div class="hero-btns">
-      <a href="#wwd" class="btn-hero-p">Explore Our World</a>
-      <a href="#contact" class="btn-hero-s">Partner With Us</a>
-    </div>
-  </div>
-  <div class="hero-visual">
-    <div class="hero-img-wrap">
-      <img src="HERO_IMG_PLACEHOLDER" alt="Totspark Events" onerror="this.style.display='none';this.parentElement.style.background='rgba(255,255,255,0.05)';this.parentElement.style.minHeight='300px';">
-      <div class="hero-float-badge hfb1"><div class="hfb-dot" style="background:#3DBFA6;"></div>12K+ Kids Engaged</div>
-      <div class="hero-float-badge hfb2"><div class="hfb-dot" style="background:#F5A623;"></div>500+ Events Done</div>
-    </div>
-  </div>
-</section>
+<!-- HOME PAGE -->
+<div class="page active" id="page-home">
 
-<!-- MARQUEE -->
-<div class="marquee-wrap">
-  <div class="marquee-track">
-    <span class="marquee-item"><span class="marquee-star">✦</span> Baby &amp; Kids Convention</span>
-    <span class="marquee-item"><span class="marquee-star">✦</span> Live Entertainment</span>
-    <span class="marquee-item"><span class="marquee-star">✦</span> Interactive Experiences</span>
-    <span class="marquee-item"><span class="marquee-star">✦</span> Kids Tech Platform</span>
-    <span class="marquee-item"><span class="marquee-star">✦</span> Family Celebrations</span>
-    <span class="marquee-item"><span class="marquee-star">✦</span> Safe Digital Content</span>
-    <span class="marquee-item"><span class="marquee-star">✦</span> Creator Ecosystem</span>
-    <span class="marquee-item"><span class="marquee-star">✦</span> Kengeri, Bangalore</span>
-    <span class="marquee-item"><span class="marquee-star">✦</span> Baby &amp; Kids Convention</span>
-    <span class="marquee-item"><span class="marquee-star">✦</span> Live Entertainment</span>
-    <span class="marquee-item"><span class="marquee-star">✦</span> Interactive Experiences</span>
-    <span class="marquee-item"><span class="marquee-star">✦</span> Kids Tech Platform</span>
-    <span class="marquee-item"><span class="marquee-star">✦</span> Family Celebrations</span>
-    <span class="marquee-item"><span class="marquee-star">✦</span> Safe Digital Content</span>
-    <span class="marquee-item"><span class="marquee-star">✦</span> Creator Ecosystem</span>
-    <span class="marquee-item"><span class="marquee-star">✦</span> Kengeri, Bangalore</span>
-  </div>
-</div>
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-blobs">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="blob blob-3"></div>
+    </div>
 
-<!-- ABOUT -->
-<section class="about" id="about">
-  <div class="about-inner">
-    <div class="about-visual fade-up">
-      <div class="about-blob">
-        <div class="about-quote">"By the people who lived it — for the generation who's living it now."</div>
-        <p class="about-origin">
-          Totspark Collective was born at Comic Con, where four friends volunteering together saw something that India was missing — a dedicated, joyful space for families and their toddlers. India is built on experiences, and the love parents have for their tiny ones extends far beyond birthday cakes and weekend trips. We knew we had to build this.
-        </p>
-        <p class="about-origin" style="margin-top:1rem;">
-          What started as a shared dream turned into India's first entertainment platform built entirely for kids and families — where creators, artists, and performers bring joy to young audiences across every city, every home, every little screen.
-        </p>
-        <div class="about-badges">
-          <span class="about-badge">✦ Founded at Comic Con</span>
-          <span class="about-badge">📍 Bengaluru, Karnataka</span>
-          <span class="about-badge">🌟 Est. 2023</span>
-          <span class="about-badge">👶 Ages 0–16</span>
+    <!-- floating shapes -->
+    <div class="float-shape" style="width:16px;height:16px;background:var(--sun);top:20%;right:30%;animation-delay:-1s;"></div>
+    <div class="float-shape" style="width:10px;height:10px;background:var(--berry);top:60%;right:45%;animation-delay:-3s;border-radius:4px;transform:rotate(45deg);"></div>
+    <div class="float-shape" style="width:24px;height:24px;background:var(--grass);top:75%;right:25%;animation-delay:-2s;opacity:0.4;"></div>
+
+    <div class="hero-content animate">
+      <span class="hero-tag">🎪 India's Family Experience Platform</span>
+      <h1>Creating <em>Magical</em><br/>Moments</h1>
+      <p>Totspark Collective curates extraordinary live experiences, shows, and events for your little ones — where every giggle, doodle, and first word becomes a memory that lasts forever.</p>
+      <div class="hero-actions">
+        <a href="#about" class="btn-primary">Discover Our Story →</a>
+        <a href="#" onclick="showPage('app'); return false;" class="btn-outline">✦ Explore Our App</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="stat-num">4</div>
+          <div class="stat-label">Passionate founders</div>
+        </div>
+        <div>
+          <div class="stat-num">∞</div>
+          <div class="stat-label">Memories created</div>
+        </div>
+        <div>
+          <div class="stat-num">1st</div>
+          <div class="stat-label">Kids platform in India</div>
         </div>
       </div>
     </div>
-    <div class="fade-up">
-      <span class="sec-label">About Totspark Collective</span>
-      <h2 class="sec-title">People who <span class="c-warm">lived</span> the generations — building for the <span class="c-sky">generation new</span></h2>
-      <p class="sec-body">
-        We are creators, parents, and dreamers who have loved and lived experiences across public, family, and personal celebratory events. Now we come together to build Totspark — to bring those experiences to one and all.
-      </p>
-      <p class="sec-body" style="margin-top:1rem;">
-        We want to give families a place where they can make memories for the long run with toddlers as they grow up to be young adults. We know how precious that time is — every laugh, giggle, first word spelled, every doodle and Boogie Woogie move matters.
-      </p>
-      <div class="about-pillars">
-        <div class="pillar">
-          <span class="p-icon">🎭</span>
-          <div class="p-title">Creative Curation</div>
-          <div class="p-text">Every event uniquely designed to reflect your child's personality and your family's vision</div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="about-inner">
+      <div class="about-visual animate">
+        <div class="about-card about-card-main">
+          <div class="big-text">2024</div>
+          <p>Founded with love, laughter &amp; a shared dream from Comic Con.</p>
         </div>
-        <div class="pillar">
-          <span class="p-icon">💝</span>
-          <div class="p-title">Attention to Detail</div>
-          <div class="p-text">From concept to execution, we handle every aspect with meticulous care and love</div>
+        <div class="about-card about-card-accent">
+          <div class="num">4</div>
+          <p>Co-founders united by a vision for India's children</p>
         </div>
-        <div class="pillar">
-          <span class="p-icon">✨</span>
-          <div class="p-title">Exclusive Experience</div>
-          <div class="p-text">Intimate, personalised celebrations your family will cherish forever</div>
+      </div>
+      <div class="about-text animate delay-2">
+        <span class="section-tag">Our Story</span>
+        <h2 class="section-title">Built by people who <em>lived</em> it</h2>
+        <p class="lead">Totspark is by the people who lived the generations before and now cater to the generation new — bringing imagination to experience.</p>
+        <p class="lead" style="margin-top:1rem;">Founded by four passionate people who have loved and lived experiences with various public, family, and personal celebratory events. What began as teamwork at Comic Con turned into a shared dream: India built with families, experiences, and love for tiny ones.</p>
+        <ul class="value-list">
+          <li>
+            <div class="value-dot" style="background:#E8F8F0;color:#3DBB7A;">🎨</div>
+            <div><strong>Imagination first</strong> — We believe creativity is the most precious gift you can give a child.</div>
+          </li>
+          <li>
+            <div class="value-dot" style="background:#FFF0F4;color:#E8507A;">🧡</div>
+            <div><strong>Memories over milestones</strong> — We know how precious time with little ones truly is.</div>
+          </li>
+          <li>
+            <div class="value-dot" style="background:#FFF8E0;color:#D4A017;">⭐</div>
+            <div><strong>Closer to you</strong> — Bringing creators, artists and performers to your cities and homes.</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT WE DO -->
+  <section class="services" id="services">
+    <div class="services-inner">
+      <div class="services-header animate">
+        <span class="section-tag">What We Do</span>
+        <h2 class="section-title">An ecosystem built for <em>growing up</em></h2>
+        <p class="lead">India's first entertainment platform built entirely for kids and families — where creators, artists, and performers bring joy to young audiences.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card animate delay-1" style="--accent: var(--grass); --icon-bg: #E8F8F0;">
+          <div class="service-icon">🎭</div>
+          <h3>Live Shows &amp; Tours</h3>
+          <p>Immersive live performances, theatre, and touring shows that bring the magic of storytelling directly to your city — no long travel needed.</p>
         </div>
-        <div class="pillar">
-          <span class="p-icon">🌍</span>
-          <div class="p-title">Community Driven</div>
-          <div class="p-text">A collective built on shared joy — families, creators, and storytellers united</div>
+        <div class="service-card animate delay-2" style="--accent: var(--sky); --icon-bg: #E6F5FB;">
+          <div class="service-icon">🎉</div>
+          <h3>Baby &amp; Kids Convention</h3>
+          <p>India's first-ever Baby & Kids Convention — a playful, immersive world where creators, families, and brands celebrate the magic of growing up together.</p>
+        </div>
+        <div class="service-card animate delay-3" style="--accent: var(--berry); --icon-bg: #FFF0F4;">
+          <div class="service-icon">✨</div>
+          <h3>Creative Curation</h3>
+          <p>Every event is uniquely designed to reflect your child's personality — magical touches that make each moment feel tailor-made for your family.</p>
+        </div>
+        <div class="service-card animate delay-1" style="--accent: var(--sun); --icon-bg: #FFF8E0;">
+          <div class="service-icon">🎵</div>
+          <h3>Interactive Experiences</h3>
+          <p>From first words spelled to Boogie Woogie moves — every laugh, giggle, and doodle is captured to make it a bigger-than-life memory.</p>
+        </div>
+        <div class="service-card animate delay-2" style="--accent: #9B59B6; --icon-bg: #F5EEF8;">
+          <div class="service-icon">💜</div>
+          <h3>Attention to Detail</h3>
+          <p>From concept to execution, we handle every aspect with meticulous care, precision, and a whole lot of love for every single family.</p>
+        </div>
+        <div class="service-card animate delay-3" style="--accent: #E67E22; --icon-bg: #FEF5EC;">
+          <div class="service-icon">🌟</div>
+          <h3>Exclusive Experiences</h3>
+          <p>Intimate, personalized celebrations that your family will cherish and remember forever — because you deserve nothing less than extraordinary.</p>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- WHAT WE DO -->
-<section class="wwd" id="wwd">
-  <div class="wwd-head fade-up">
-    <span class="sec-label">What We Do</span>
-    <h2 class="sec-title">Building India's First <span class="c-sky">Baby &amp; Kids</span> <span class="c-warm">Convention</span></h2>
-  </div>
-  <p class="wwd-intro-text fade-up">
-    To build an ecosystem that cares for Indian families and their loving toddlers. A playful, immersive world where creators, families, and brands come together to celebrate the magic of growing up. Every laugh, every first word, every doodle — captured and made into a bigger-than-life feeling.
-  </p>
-  <br><br>
-  <div class="wwd-cols">
-    <div class="wwd-card wc1 fade-up">
-      <div class="wwd-card-accent"></div>
-      <span class="wwd-icon">🎪</span>
-      <div class="wwd-title">Creative Curation &amp; Event Management</div>
-      <div class="wwd-text">End-to-end event management for kids' conventions, festivals, and family celebrations. We design the concept, execute the vision, and deliver experiences that families talk about for years.</div>
-    </div>
-    <div class="wwd-card wc2 fade-up">
-      <div class="wwd-card-accent"></div>
-      <span class="wwd-icon">🌟</span>
-      <div class="wwd-title">Live Shows &amp; Performances</div>
-      <div class="wwd-text">Bringing creators, artists, and performers who bring joy to young audiences — live shows, tours, and interactive performances that celebrate creativity and childhood in every city.</div>
-    </div>
-    <div class="wwd-card wc3 fade-up">
-      <div class="wwd-card-accent"></div>
-      <span class="wwd-icon">🤝</span>
-      <div class="wwd-title">Brand &amp; Community Partnerships</div>
-      <div class="wwd-text">Connecting family-forward brands with our engaged community of parents and kids. Authentic partnerships that add value — not noise — to family experiences.</div>
-    </div>
-  </div>
-</section>
-
-<!-- APP -->
-<section class="app-sec" id="app">
-  <div class="app-inner">
-    <div class="fade-up">
-      <span class="sec-label">Our Product</span>
-      <h2 class="sec-title">TikTok for Kids — <span style="color:var(--teal);">But Safe.</span><br>But Magical.</h2>
-      <p class="app-desc">
-        We are building a short-form video platform exclusively for children — the first of its kind in India. Think TikTok, but every single piece of content is handpicked, age-verified, and hyper-moderated to ensure nothing inappropriate ever reaches your child's screen.
-      </p>
-      <ul class="app-features">
-        <li><div class="afc">✓</div><span><strong style="color:#fff;">100% Kids-Only Content</strong> — every video reviewed and approved by our content safety team before going live</span></li>
-        <li><div class="afc">✓</div><span><strong style="color:#fff;">AI + Human Moderation</strong> — a two-layer moderation system that catches what algorithms miss</span></li>
-        <li><div class="afc">✓</div><span><strong style="color:#fff;">Curated Creators</strong> — only verified, background-checked educators and performers create for our platform</span></li>
-        <li><div class="afc">✓</div><span><strong style="color:#fff;">No Ads, No Distractions</strong> — a completely clean, distraction-free environment for curious minds</span></li>
-        <li><div class="afc">✓</div><span><strong style="color:#fff;">Parent Dashboard</strong> — full visibility and controls so parents stay in the loop, always</span></li>
-      </ul>
-      <div class="app-tags">
-        <div class="app-tag">📱 iOS &amp; Android</div>
-        <div class="app-tag">🛡️ Ultra-Safe</div>
-        <div class="app-tag">🚀 Coming 2025</div>
+  <!-- FOUNDERS -->
+  <section class="founders" id="founders-section">
+    <div class="founders-inner">
+      <div class="founders-header animate">
+        <span class="section-tag">Meet the Team</span>
+        <h2 class="section-title">The people behind <em>the magic</em></h2>
+      </div>
+      <div class="founders-grid">
+        <div class="founder-card animate delay-1">
+          <div class="founder-avatar" style="background:#E8F8F0;color:#3DBB7A;">KD</div>
+          <div class="founder-info">
+            <h3>Kuldeep D Salian</h3>
+            <div class="role">Co-Founder & CEO</div>
+            <p>Operational expertise and hands-on leadership across event management, sports tournaments, and large-scale events. A former founding member at InfyOz.</p>
+          </div>
+        </div>
+        <div class="founder-card animate delay-2">
+          <div class="founder-avatar" style="background:#FFF8E0;color:#D4A017;">HS</div>
+          <div class="founder-info">
+            <h3>Havish Sreenath</h3>
+            <div class="role">Co-Founder</div>
+            <p>Business storyteller, theatre artist, and mentor. A decade of experience in Comic Con, with deep roots in community building and people-first approaches.</p>
+          </div>
+        </div>
+        <div class="founder-card animate delay-3">
+          <div class="founder-avatar" style="background:#FFF0F4;color:#E8507A;">SK</div>
+          <div class="founder-info">
+            <h3>Sanat Kumar</h3>
+            <div class="role">Co-Founder</div>
+            <p>Background in Biotechnology, pivoted to live entertainment, gaming, and event execution. Contributed to Comic Con India for 8 years across hosting and community engagement.</p>
+          </div>
+        </div>
+        <div class="founder-card animate delay-4">
+          <div class="founder-avatar" style="background:#E8F0FE;color:#4A6CF7;">TD</div>
+          <div class="founder-info">
+            <h3>Tanmay D Salian</h3>
+            <div class="role">Co-Founder</div>
+            <p>Youngest co-founder with Business Analytics expertise. Mentored by co-founders, he blends analytical thinking with creative problem-solving across initiatives.</p>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="phone-wrap fade-up">
-      <div class="phone">
-        <div class="phone-notch"></div>
-        <div class="phone-screen">
-          <div class="tk-slide" id="slide1">
-            <div class="tk-video">
-              <div class="tk-bg tk-bg-1">🦕</div>
-              <div class="tk-overlay">
-                <div class="tk-user">@DinoDiscoveries</div>
-                <div class="tk-caption">Did you know T-Rex had tiny arms because they were super strong grippers? 🦖</div>
-                <div class="tk-tags">
-                  <span class="tk-tag">#KidsLearn</span>
-                  <span class="tk-tag">#Dinosaurs</span>
-                  <span class="tk-tag">#Fun</span>
-                </div>
-              </div>
-              <div class="tk-sidebar">
-                <div class="tk-btn"><span class="tk-btn-icon">❤️</span><span class="tk-btn-label">12.4K</span></div>
-                <div class="tk-btn"><span class="tk-btn-icon">💬</span><span class="tk-btn-label">348</span></div>
-                <div class="tk-btn"><span class="tk-btn-icon">⭐</span><span class="tk-btn-label">Save</span></div>
-              </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="contact-inner">
+      <div class="animate">
+        <span class="section-tag">Get In Touch</span>
+        <h2 class="section-title">Let's create something <em>wonderful</em></h2>
+        <p class="lead">Have an event in mind? Want to collaborate? Or just want to say hello? We'd love to hear from you.</p>
+        <div class="contact-details">
+          <div class="contact-item">
+            <div class="contact-item-icon">✉️</div>
+            <div>
+              <div class="contact-item-label">Email us</div>
+              <div class="contact-item-value">totsparkcollective@gmail.com</div>
             </div>
           </div>
-          <div class="tk-header">
-            <span class="tk-logo-small">TOTSPARK</span>
-            <span class="tk-safe">🛡️ SAFE</span>
+          <div class="contact-item">
+            <div class="contact-item-icon">📞</div>
+            <div>
+              <div class="contact-item-label">Call us</div>
+              <div class="contact-item-value">8050569662</div>
+            </div>
           </div>
-          <div class="tk-nav">
-            <div class="tk-nav-item active"><span>🏠</span><span class="tk-nav-label">Home</span></div>
-            <div class="tk-nav-item"><span>🔍</span><span class="tk-nav-label">Explore</span></div>
-            <div class="tk-nav-item"><span>➕</span><span class="tk-nav-label">Create</span></div>
-            <div class="tk-nav-item"><span>👾</span><span class="tk-nav-label">Learn</span></div>
-            <div class="tk-nav-item"><span>👤</span><span class="tk-nav-label">Profile</span></div>
+          <div class="contact-item">
+            <div class="contact-item-icon">📍</div>
+            <div>
+              <div class="contact-item-label">Find us</div>
+              <div class="contact-item-value">Kengeri, Bangalore 560060</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="animate delay-2">
+        <div class="contact-form">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" placeholder="e.g. Priya Sharma" />
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" placeholder="you@example.com" />
+          </div>
+          <div class="form-group">
+            <label>What are you looking for?</label>
+            <textarea rows="4" placeholder="Tell us about your dream event or collaboration idea..."></textarea>
+          </div>
+          <button class="btn-primary" style="border:none;cursor:pointer;width:fit-content;" onclick="alert('Message sent! We will get back to you soon 🎉')">
+            Send Message →
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+<!-- END HOME PAGE -->
+
+
+<!-- APP PAGE -->
+<div class="page" id="page-app">
+
+  <div class="product-hero">
+    <div class="product-hero-bg"></div>
+    <div class="product-hero-inner">
+      <div>
+        <div class="product-badge">✦ Coming Soon — India's First</div>
+        <h1>Kids<span> deserve</span><br/>better<br/>videos.</h1>
+        <p>We're building a short-form video platform exclusively for children — think Reels, but every single piece of content is handpicked, age-verified, and hyper-moderated. Nothing inappropriate ever reaches your child's screen. Ever.</p>
+        <div class="product-hero-actions">
+          <a href="#" class="btn-sun" onclick="alert('You\'re on the waitlist! 🎉')">Join the Waitlist →</a>
+          <a href="#" class="btn-ghost" onclick="document.getElementById('app-features').scrollIntoView({behavior:'smooth'})">Learn More ↓</a>
+        </div>
+      </div>
+
+      <div class="phone-wrap">
+        <!-- Floating labels -->
+        <div class="phone-label" style="top:-10px;left:-30px;animation: float 5s ease-in-out infinite;">
+          <span>🛡️</span> 100% Safe
+        </div>
+        <div class="phone-label" style="bottom:80px;left:-40px;animation: float 6s ease-in-out infinite;animation-delay:-2s;">
+          <span>✅</span> Age-Verified
+        </div>
+        <div class="phone-label" style="top:120px;right:-50px;animation: float 7s ease-in-out infinite;animation-delay:-1s;">
+          <span>👁️</span> Moderated
+        </div>
+
+        <div class="phone">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="phone-status">
+              <span>9:41</span>
+              <span>⚡ Totspark</span>
+              <span>🔒 Safe</span>
+            </div>
+            <div style="padding: 8px 12px 4px; font-size: 0.65rem; font-weight: 500; color: rgba(255,248,238,0.9);">
+              Good morning! 🌞 Ready to explore?
+            </div>
+            <div class="phone-feed">
+              <div class="feed-card" style="background: rgba(61,187,122,0.15); border: 1px solid rgba(61,187,122,0.2);">
+                <div class="feed-card-title" style="color:#3DBB7A;">🎨 Art with Aryan — Ep. 12</div>
+                <div class="feed-card-sub" style="color:rgba(255,248,238,0.5);">Draw a jungle animal in 5 steps</div>
+                <span class="verified-badge">✓ Age 3–8 Approved</span>
+              </div>
+              <div class="feed-card" style="background: rgba(74,171,218,0.15); border: 1px solid rgba(74,171,218,0.2);">
+                <div class="feed-card-title" style="color:#4AABDA;">🔬 Science with Meera</div>
+                <div class="feed-card-sub" style="color:rgba(255,248,238,0.5);">Why does ice cream melt? Find out!</div>
+                <span class="verified-badge" style="background:rgba(74,171,218,0.2);color:#4AABDA;">✓ Age 5–10 Approved</span>
+              </div>
+              <div class="feed-card" style="background: rgba(255,217,90,0.12); border: 1px solid rgba(255,217,90,0.2);">
+                <div class="feed-card-title" style="color:#FFD95A;">🎵 Boogie with Bunny!</div>
+                <div class="feed-card-sub" style="color:rgba(255,248,238,0.5);">The Twinkle Star Dance Challenge</div>
+                <span class="verified-badge" style="background:rgba(255,217,90,0.15);color:#FFD95A;">✓ All Ages Approved</span>
+              </div>
+            </div>
+            <div class="phone-nav">
+              <div class="phone-nav-dot active"></div>
+              <div class="phone-nav-dot"></div>
+              <div class="phone-nav-dot"></div>
+              <div class="phone-nav-dot"></div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</section>
 
-<!-- FOUNDERS -->
-<section class="founders" id="founders">
-  <div class="founders-head fade-up">
-    <span class="sec-label">Meet Our Founders</span>
-    <h2 class="sec-title">Four Friends. One <span class="c-warm">Shared Dream.</span></h2>
-    <p style="font-size:1rem;color:var(--muted);line-height:1.75;margin-top:0.75rem;">Who better to build this than three brothers who at one point have seen and been part of each other's lives growing up — and a creative visionary who's part of a toddler's upbringing journey.</p>
-  </div>
-  <div class="founders-grid">
-    <div class="f-card fc1 fade-up">
-      <div class="f-top">
-        <div class="f-init">KS</div>
-        <div class="f-role-tag">Co-Founder &amp; CEO</div>
+  <!-- FEATURES -->
+  <section class="features" id="app-features">
+    <div class="features-inner">
+      <div class="features-header animate">
+        <span class="section-tag">How It Works</span>
+        <h2 class="section-title">Built differently, <em>on purpose</em></h2>
+        <p class="lead" style="margin: 0 auto;">Every design decision we made was with one question in mind: is this good for the child? The answer shapes everything.</p>
       </div>
-      <div class="f-bottom">
-        <div class="f-name">Kuldeep D Salian</div>
-        <div class="f-title">Chief Executive Officer</div>
-        <div class="f-bio">Co-Founder and CEO with strong operational expertise and hands-on leadership. A former founding member at Infoscion, he played a key role in building and scaling its early operations. With deep experience in event management — managing teams and large-scale events, including tournaments in football and cricket — Kuldeep brings impressive process-building skills to Totspark, leading strategy, event execution, and ensuring inspiring ideas are delivered effectively.</div>
-      </div>
-    </div>
-    <div class="f-card fc2 fade-up">
-      <div class="f-top">
-        <div class="f-init">HS</div>
-        <div class="f-role-tag">Co-Founder</div>
-      </div>
-      <div class="f-bottom">
-        <div class="f-name">Havish Sreenath</div>
-        <div class="f-title">Co-Founder</div>
-        <div class="f-bio">An engineer, serial entrepreneur, and CEO of Infiscion Labs. He brings expertise across sales, business development, and large-scale event execution. A business storyteller, theatre artist, and mentor, he has played a big role in guiding the founding team. With over a decade of experience at Comic Con, he focuses on building events and community-driven experiences at Totspark — mentoring talent and creating impactful, story-driven experiences through a people-first approach.</div>
-      </div>
-    </div>
-    <div class="f-card fc3 fade-up">
-      <div class="f-top">
-        <div class="f-init">SK</div>
-        <div class="f-role-tag">Co-Founder</div>
-      </div>
-      <div class="f-bottom">
-        <div class="f-name">Sanat Kumar</div>
-        <div class="f-title">Co-Founder</div>
-        <div class="f-bio">Co-Founder with experience in live entertainment, gaming, and event execution. With a B.Sc. in Biotechnology and Genetics, he transitioned into sales, business development, and interactive entertainment formats. A Co-founder with Blueprints, he has worked on titles like PUBG, Pokémon Unite, Valorant and more — and contributed to Comic Con India for 8 years in roles ranging from team leader to on-stage host, audience engagement, and sales-driven growth. At Totspark, he focuses on partnerships and creating engaging, people-centric experiences.</div>
-      </div>
-    </div>
-    <div class="f-card fc4 fade-up">
-      <div class="f-top">
-        <div class="f-init">TS</div>
-        <div class="f-role-tag">Co-Founder</div>
-      </div>
-      <div class="f-bottom">
-        <div class="f-name">Tanmay D Salian</div>
-        <div class="f-title">Co-Founder</div>
-        <div class="f-bio">The youngest Co-Founder, bringing a fresh, new-generational perspective shaped by mentorship from his co-founders. With a background in Business Analytics and working knowledge of UI/UX design, he blends analytical thinking with creativity. Having supported Totspark's core operations, he has led and supervised major events like Comic Con and GTA Tokyo. A former startup founding member, he has early entrepreneurial experience and contributes innovative ideas and creative problem-solving across initiatives.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section class="contact" id="contact">
-  <div class="contact-inner">
-    <div class="fade-up">
-      <span class="sec-label">Contact Us</span>
-      <h2 class="sec-title">Let's <span class="c-warm">Connect</span> &amp; Create Together</h2>
-      <p class="sec-body">Whether you're a parent, a brand, a school, or an investor — we'd love to hear from you. Reach out and our team will get back within 24 hours.</p>
-      <div class="contact-info-block">
-        <div class="ci">
-          <div class="ci-icon-wrap" style="background:#EBF5FB;">📧</div>
-          <div><div class="ci-label">Email</div><div class="ci-val">totsparkcollective@gmail.com</div></div>
+      <div class="features-grid">
+        <div class="feature-item animate delay-1">
+          <div class="feature-icon-wrap" style="background:#E8F8F0;">🤲</div>
+          <div>
+            <h3>Handpicked Content</h3>
+            <p>Every single video on our platform is individually reviewed by our team. No algorithm decides what your child sees — real humans do, every time.</p>
+          </div>
         </div>
-        <div class="ci">
-          <div class="ci-icon-wrap" style="background:#FDF8EC;">📞</div>
-          <div><div class="ci-label">Phone</div><div class="ci-val">8050569662</div></div>
+        <div class="feature-item animate delay-2">
+          <div class="feature-icon-wrap" style="background:#FFF0F4;">🔒</div>
+          <div>
+            <h3>Age-Gated by Design</h3>
+            <p>Content is tagged and locked by age group. A 4-year-old simply cannot access content meant for a 10-year-old. It's enforced at the system level.</p>
+          </div>
         </div>
-        <div class="ci">
-          <div class="ci-icon-wrap" style="background:#EBF9F5;">📍</div>
-          <div><div class="ci-label">Address</div><div class="ci-val">Kengeri, Bangalore 560060</div></div>
+        <div class="feature-item animate delay-3">
+          <div class="feature-icon-wrap" style="background:#FFF8E0;">⚡</div>
+          <div>
+            <h3>Short-Form Magic</h3>
+            <p>Designed for short attention spans in the best way — engaging, educational micro-content that leaves them inspired, not endlessly scrolling.</p>
+          </div>
+        </div>
+        <div class="feature-item animate delay-4">
+          <div class="feature-icon-wrap" style="background:#E6F5FB;">🌍</div>
+          <div>
+            <h3>India-First Creators</h3>
+            <p>We champion Indian creators, educators, artists, and performers. Content that reflects Indian culture, languages, and the diverse world your child lives in.</p>
+          </div>
+        </div>
+        <div class="feature-item animate delay-1">
+          <div class="feature-icon-wrap" style="background:#F5EEF8;">📊</div>
+          <div>
+            <h3>Parent Dashboard</h3>
+            <p>Full visibility for parents. See what your child watched, how long, and set daily time limits — complete control without hovering over their shoulder.</p>
+          </div>
+        </div>
+        <div class="feature-item animate delay-2">
+          <div class="feature-icon-wrap" style="background:#FEF5EC;">🎓</div>
+          <div>
+            <h3>Learning Built In</h3>
+            <p>Entertainment that teaches. Every piece of content goes through an educational value check — fun is mandatory, but so is growth.</p>
+          </div>
         </div>
       </div>
     </div>
-    <div class="contact-form-wrap fade-up">
-      <div class="form-ttl">Send Us a Message</div>
-      <div class="frow">
-        <div class="fg"><label class="flbl">First Name</label><input class="finp" type="text" placeholder="Your name"></div>
-        <div class="fg"><label class="flbl">Last Name</label><input class="finp" type="text" placeholder="Last name"></div>
-      </div>
-      <div class="fg"><label class="flbl">Email Address</label><input class="finp" type="email" placeholder="you@example.com"></div>
-      <div class="fg"><label class="flbl">Phone Number</label><input class="finp" type="tel" placeholder="+91 98765 43210"></div>
-      <div class="fg">
-        <label class="flbl">I'm reaching out as a...</label>
-        <select class="fsel">
-          <option>Parent / Guardian</option>
-          <option>School / Institution</option>
-          <option>Corporate / Brand Partner</option>
-          <option>Investor</option>
-          <option>Media / Press</option>
-          <option>App Creator / Performer</option>
-          <option>Other</option>
-        </select>
-      </div>
-      <div class="fg"><label class="flbl">Message</label><textarea class="ftxt" placeholder="Tell us what you have in mind..."></textarea></div>
-      <button class="fsub" id="fsub-btn">Send Message →</button>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- FOOTER -->
+  <!-- SAFETY -->
+  <section class="safety">
+    <div class="safety-bg"></div>
+    <div class="safety-inner">
+      <div>
+        <span class="section-tag" style="color:var(--sun);">Safety First, Always</span>
+        <h2 class="section-title">Zero compromise.<br/><em>Zero tolerance.</em></h2>
+        <p class="lead">Other platforms moderate at scale with algorithms. We moderate with people, process, and a parent's instinct. There is no grey area.</p>
+        <div class="safety-pillars">
+          <div class="pillar">
+            <div class="pillar-icon">🧑‍💻</div>
+            <div>
+              <h4>Human Review on Every Upload</h4>
+              <p>No video goes live without a trained reviewer watching it in full. Every. Single. One.</p>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">🔍</div>
+            <div>
+              <h4>Multi-Layer Moderation</h4>
+              <p>AI pre-screening + Human review + Editorial sign-off. Three gates before your child sees it.</p>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">🚨</div>
+            <div>
+              <h4>Instant Removal Protocol</h4>
+              <p>Any flagged content is removed within minutes. Parents can flag, and we act immediately.</p>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">🤝</div>
+            <div>
+              <h4>Creator Accountability</h4>
+              <p>Every creator on our platform signs a strict content covenant. Violations mean permanent removal.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="safety-stats">
+          <div class="safety-stat-card">
+            <div class="safety-stat-num">100%</div>
+            <div class="safety-stat-label">Human reviewed content before it goes live</div>
+          </div>
+          <div class="safety-stat-card">
+            <div class="safety-stat-num">0</div>
+            <div class="safety-stat-label">Ads. Ever. No advertiser gets access to your child</div>
+          </div>
+          <div class="safety-stat-card">
+            <div class="safety-stat-num">3×</div>
+            <div class="safety-stat-label">Moderation layers every piece of content passes through</div>
+          </div>
+          <div class="safety-stat-card">
+            <div class="safety-stat-num">∞</div>
+            <div class="safety-stat-label">Parental control options to customise the experience</div>
+          </div>
+        </div>
+        <div style="margin-top:2rem;padding:2rem;background:rgba(255,248,238,0.06);border:1px solid rgba(255,248,238,0.12);border-radius:20px;">
+          <p style="font-size:1.1rem;line-height:1.7;color:rgba(255,248,238,0.8);font-weight:300;font-family:'Fraunces',serif;font-style:italic;">"We are building this because we are parents too. Or we will be. And we refuse to hand our children a scroll-hole. We're handing them a world."</p>
+          <p style="margin-top:1rem;font-size:0.82rem;color:rgba(255,248,238,0.4);">— Totspark Collective Founders</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA WAITLIST -->
+  <section style="background:var(--cream);padding:6rem 3rem;text-align:center;">
+    <span class="section-tag">Coming Soon to India</span>
+    <h2 class="section-title" style="max-width:560px;margin:0.5rem auto 1rem;">Be the first to give your child<br/><em>the better choice</em></h2>
+    <p class="lead" style="margin: 0 auto 2.5rem;text-align:center;">Join thousands of Indian families on the waitlist. Early access, free premium trial, and a say in what gets built.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;max-width:500px;margin:0 auto;">
+      <input type="email" placeholder="your@email.com" style="flex:1;padding:0.9rem 1.25rem;border:2px solid rgba(26,26,46,0.15);border-radius:50px;font-family:'DM Sans',sans-serif;font-size:0.95rem;color:var(--ink);outline:none;min-width:200px;" />
+      <button class="btn-primary" style="border:none;cursor:pointer;border-radius:50px;" onclick="alert('You\'re on the waitlist! 🎉 We\'ll be in touch.')">Join Waitlist →</button>
+    </div>
+    <p style="margin-top:1.5rem;font-size:0.8rem;color:var(--muted);">No spam. No ads. Just updates when we launch. 🌱</p>
+  </section>
+
+</div>
+<!-- END APP PAGE -->
+
 <footer>
-  <div class="footer-logo"><img src="LOGO_SRC_PLACEHOLDER" alt="Totspark Collective"></div>
-  <ul class="footer-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#wwd">What We Do</a></li>
-    <li><a href="#app">Our App</a></li>
-    <li><a href="#founders">Our Team</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-  <div class="footer-copy">© 2025 Totspark Collective. All rights reserved. · Bengaluru, India</div>
+  <div>
+    <a href="#" class="logo" onclick="showPage('home')">Tots<span>park</span></a>
+    <p style="margin-top:0.5rem;">India's family experience platform. Kengeri, Bangalore.</p>
+  </div>
+  <nav style="background:transparent;position:static;border:none;backdrop-filter:none;padding:0;">
+    <ul style="gap:1.5rem;">
+      <li><a href="#" onclick="showPage('home')" style="color:rgba(255,248,238,0.5);">Home</a></li>
+      <li><a href="#about" onclick="showPage('home')" style="color:rgba(255,248,238,0.5);">About</a></li>
+      <li><a href="#" onclick="showPage('app')" style="color:var(--sun);">Our App</a></li>
+      <li><a href="mailto:totsparkcollective@gmail.com" style="color:rgba(255,248,238,0.5);">Contact</a></li>
+    </ul>
+  </nav>
+  <p>© 2024 Totspark Collective</p>
 </footer>
 
 <script>
-const obs = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('vis'); obs.unobserve(e.target); } });
-}, { threshold: 0.1 });
-document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+  function showPage(name) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('page-' + name).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 
-document.getElementById('fsub-btn').addEventListener('click', function() {
-  this.textContent = '✓ Message Sent!';
-  this.style.background = '#3DBFA6';
-  setTimeout(() => { this.textContent = 'Send Message →'; this.style.background = ''; }, 3000);
-});
+  function toggleMenu() {
+    const ul = document.querySelector('nav ul');
+    ul.style.display = ul.style.display === 'flex' ? 'none' : 'flex';
+    ul.style.flexDirection = 'column';
+    ul.style.position = 'absolute';
+    ul.style.top = '60px';
+    ul.style.right = '1.5rem';
+    ul.style.background = 'var(--cream)';
+    ul.style.padding = '1rem 1.5rem';
+    ul.style.borderRadius = '16px';
+    ul.style.border = '1px solid rgba(26,26,46,0.1)';
+    ul.style.boxShadow = '0 8px 32px rgba(26,26,46,0.1)';
+  }
 
-// Animate phone feed slides
-const slides = [
-  { emoji: '🦕', color: 'linear-gradient(160deg,#1A3A4A 0%,#0D1F2D 100%)', user: '@DinoDiscoveries', caption: 'Did you know T-Rex had tiny arms because they were super strong? 🦖', tags: ['#KidsLearn','#Dinosaurs'] },
-  { emoji: '🎨', color: 'linear-gradient(160deg,#3A1A4A 0%,#2D0D3A 100%)', user: '@TinyArtists', caption: 'Three easy ways to draw a rainbow with your fingers! 🌈', tags: ['#ArtForKids','#Create'] },
-  { emoji: '🚀', color: 'linear-gradient(160deg,#1A3A2A 0%,#0D2D1A 100%)', user: '@SpaceKids', caption: 'The moon is actually moving away from Earth 3.8cm every year! 🌙', tags: ['#Space','#Science'] },
-];
-let cur = 0;
-function updateSlide() {
-  const s = slides[cur];
-  const screen = document.querySelector('.phone-screen');
-  const slide = screen.querySelector('.tk-slide');
-  const bg = slide.querySelector('.tk-bg');
-  const user = slide.querySelector('.tk-user');
-  const cap = slide.querySelector('.tk-caption');
-  const tags = slide.querySelector('.tk-tags');
-  slide.style.opacity = '0';
-  slide.style.transform = 'translateY(30px)';
-  setTimeout(() => {
-    bg.style.background = s.color;
-    bg.textContent = s.emoji;
-    user.textContent = s.user;
-    cap.textContent = s.caption;
-    tags.innerHTML = s.tags.map(t => `<span class="tk-tag">${t}</span>`).join('');
-    slide.style.transition = 'opacity 0.4s,transform 0.4s';
-    slide.style.opacity = '1';
-    slide.style.transform = 'translateY(0)';
-  }, 300);
-  cur = (cur + 1) % slides.length;
-}
-setInterval(updateSlide, 2800);
+  // Intersection observer for animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.animationPlayState = 'running';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.animate').forEach(el => {
+    el.style.animationPlayState = 'paused';
+    observer.observe(el);
+  });
 </script>
 </body>
-</html>"""
-
-html = html.replace("LOGO_SRC_PLACEHOLDER", logo_src)
-
-with open('/mnt/user-data/outputs/totspark-collective-v2.html', 'w') as f:
-    f.write(html)
-
-print("Done!", len(html), "chars")
-PYEOF
+</html>
